@@ -1,0 +1,154 @@
+﻿:root {
+    --light-accent: #00aeff;
+	--light-white: #fff;
+	--light-black: #08090d;
+	--light-gray: #888;
+	--light-background: #f4f4f4;
+	--light-stroke: #e9e9e9;
+	--light-light-gray: #d8d8d8;
+	--light-green: #09a854;
+	--light-purple: #4813cb;
+	--light-red: #ef3124;
+	--dark-accent: #00aeff;
+	--dark-white: #fff;
+	--dark-black: #101010;
+	--dark-background: #1c1c1c;
+	--dark-gray: #6a6a6a;
+	--dark-stroke: #2c2c2c;
+	--dark-light-gray: #282828;
+    --font-family: "Inter", sans-serif;
+    --second-family: "Manrope", sans-serif;
+    --main-font-size: 16px;
+    --main-font-weight: 500;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: white;
+    color: var(--light-black);
+    font-size: var(--main-font-size);
+    line-height: 1.38;
+    font-weight: var(--main-font-weight);
+}
+ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+h1,
+h2,
+h3 {
+    margin: 0;
+    display: block;
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+article,
+address,
+aside,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+address{
+    font-style: normal;
+}
+section {
+    display: block;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+svg,
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+a {
+    color: inherit;
+    text-underline-offset: 3px;
+    text-decoration: underline;
+    transition: all 0.3s;
+}
+a:hover {
+    text-decoration-color: transparent;
+    color: var(--light-accent);
+}
+.container{
+    max-width: 1360px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+h1,
+.h1{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 115%;
+}
+h2,
+.h2{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 119%;
+}
+h3,
+.h3{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 125%;
+}
+h,
+.h4{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+}
+h5,
+.h5{
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+.pad{
+    padding: 64px 0;
+}
+
+@media all and (max-width: 1200px){
+    .pad{
+        padding: 32px 0;
+    }
+}
+
+@media all and (max-width: 768px){
+    h1,
+    .h1{
+        font-size: 32px;
+        line-height: 119%;
+    }
+    h2,
+    .h2{
+        font-size: 24px;
+        line-height: 125%;
+    }
+    h3,
+    .h3{
+        font-size: 20px;
+        line-height: 130%;
+    }
+    h,
+    .h4{
+        font-size: 16px;
+    }
+}

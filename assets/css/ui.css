@@ -1,0 +1,22 @@
+﻿.text-gray{
+    color: var(--light-gray);
+}
+.border-side{
+    position: relative;
+}
+.border-side::before,
+.border-side::after{
+    content: '';
+    background-color: var(--light-black);
+    width: 2px;
+    height: calc(100% - 2px);
+    top: 1px;
+    display: block;
+    position: absolute;
+}
+.border-side::before{
+    left: 1px;
+}
+.border-side::after{
+    right: 1px;
+}

@@ -1,0 +1,75 @@
+﻿:root{
+    --main-color: #252121;
+    --main-background: #fff;
+    --main-font: sans-serif;
+    --main-font-size: 14px;
+    --main-line-height: 130%;
+    --main-font-weight: 400;
+}
+body{
+	margin: 0;
+	padding: 0;
+	font-family: var(--main-font);
+	background: var(--main-background);
+	color: var(--main-color);
+	font-size: var(--main-font-size);
+	line-height: var(--main-line-height);
+	font-weight: var(--main-font-weight);
+}
+ul{
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+h1,h2,h3{
+	margin: 0;
+	display: block;
+	padding: 0;
+}
+p{
+	margin: 0;
+}
+article, aside, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+section{
+	display: block;
+}
+*,
+*:before,
+*:after{
+	box-sizing: border-box;
+}
+svg,
+img{
+    display: block;
+	max-width: 100%;
+	height: auto;
+}
+a{
+    color: inherit;
+    text-underline-offset: 3px;
+    text-decoration: underline;
+    transition: all 0.3s;
+}
+a:hover{
+    text-decoration-color: transparent;
+}
+.anim-opacity-top,
+.anim-opacity-bottom,
+.anim-opacity {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.anim-opacity-top {
+    transform: translateY(-20px);
+}
+.anim-opacity-bottom {
+    transform: translateY(20px);
+}
+.anim-opacity-top._active,
+.anim-opacity-bottom._active,
+.anim-opacity._active {
+    opacity: 1;
+    transform: translate(0);
+}
