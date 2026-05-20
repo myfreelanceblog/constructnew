@@ -54,6 +54,8 @@
         await loadScript('assets/js/libs/inputmask.min.js');
 
         await loadYandexMap();
+
+        initUI();
         
         initMap();
     }
@@ -90,4 +92,6 @@
             once: true
         });
     });
+
+    setTimeout(lazyLoad, 3000);
 </script>

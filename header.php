@@ -25,6 +25,7 @@ include 'functions.php';
 	<link rel="stylesheet" href="assets/css/base.css<?php echo $dev; ?>" />
 	<link rel="stylesheet" href="assets/css/ui.css<?php echo $dev; ?>" />
 	<link rel="stylesheet" href="assets/css/header.css<?php echo $dev; ?>" />
+	<link rel="stylesheet" href="assets/css/hero.css<?php echo $dev; ?>" />
 	<link rel="stylesheet" href="assets/css/footer.css<?php echo $dev; ?>" />
 	
 </head>
@@ -52,9 +53,16 @@ include 'functions.php';
                                 <a href="javascript:void(0);">Каталог</a>
                                 <div class="dropdown-menu">
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="javascript:void(0);">Все модели компьютеров</a></li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);">
+                                                <span>Все модели компьютеров</span>
+                                            </a>
+                                        </li>
                                         <li class="menu-item menu-item-has-children">
-                                            <a href="javascript:void(0);">Игровые компьютеры</a>
+                                            <a href="javascript:void(0);">
+                                                <span>Игровые компьютеры</span>
+                                                <div class="menu-item__mob-icon"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></div>
+                                            </a>
                                             <?php
                                             $sub = array(
                                                 'Elementary',
@@ -75,31 +83,40 @@ include 'functions.php';
                                                 <?php endforeach; ?>
                                             </ul>
                                         </li>
-                                        <li class="menu-item"><a href="javascript:void(0);">Рабочие станции</a></li>
+                                        <li class="menu-item">
+                                            <a href="javascript:void(0);">
+                                                <span>Рабочие станции</span>
+                                            </a>
+                                        </li>
                                         <li class="menu-item"><a href="javascript:void(0);">Конфигуратор</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="menu-item menu-item-has-children">
+                            <li class="menu-item">
                                 <a href="javascript:void(0);">Доставка и оплата</a>
-                                <div class="dropdown-menu">
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="javascript:void(0);">Гарантии</a></li>
-                                    </ul>
-                                </div>
                             </li>
                             <li class="menu-item"><a href="javascript:void(0);">Гарантия</a></li>
                             <li class="menu-item"><a href="javascript:void(0);">Блог</a></li>
                         </ul>
                     </nav>
-
-                    <a href="javascript:void(0);" class="header-cart border-side">
-                        <div class="header-cart__count">
-                            <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#cart"></use></svg>
-                            <span class="count-cart-mini">1</span>
-                        </div>
-                        <div class="header-cart__title">Корзина</div>
-                    </a>
+                    <div class="header-bottom__right">
+                        <a href="javascript:void(0);" class="header-cart border-side">
+                            <div class="header-cart__count">
+                                <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#cart"></use></svg>
+                                <span class="count-cart-mini">1</span>
+                            </div>
+                            <div class="header-cart__title">Корзина</div>
+                        </a>
+                        <button class="mob-m pointer" type="button" aria-label="Menu">
+                            <div class="mob-m__content">
+                                <svg width="30" height="30"><use href="assets/img/sprite.svg<?php echo $dev; ?>#menu"></use></svg>
+                                <svg width="23" height="23"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
+                            </div>
+                            <span class="pointer__top"></span>
+                            <span class="pointer__bottom"></span>
+                        </button>
+                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 ﻿:root {
     --light-accent: #00aeff;
+    --hover: #0195DB;
 	--light-white: #fff;
 	--light-black: #08090d;
 	--light-gray: #888;
@@ -92,10 +93,10 @@ a:hover {
 }
 h1,
 .h1{
-    font-family: var(--font-family);
+    font-family: var(--second-family);
     font-weight: 700;
     font-size: 40px;
-    line-height: 115%;
+    line-height: 1.15;
 }
 h2,
 .h2{
@@ -118,24 +119,25 @@ h,
 }
 h5,
 .h5{
-    font-family: var(--font-family);
+    font-family: var(--second-family);
     font-weight: 700;
+    font-size: 16px;
 }
 .pad{
     padding: 64px 0;
+}
+div.swiper-slide{
+    height: auto;
 }
 
 @media all and (max-width: 1200px){
     .pad{
         padding: 32px 0;
     }
-}
-
-@media all and (max-width: 768px){
     h1,
     .h1{
-        font-size: 32px;
-        line-height: 119%;
+        font-size: clamp(32px, 3.3vw, 40px);
+        line-height: 1.19;
     }
     h2,
     .h2{
@@ -151,4 +153,8 @@ h5,
     .h4{
         font-size: 16px;
     }
+}
+
+@media all and (max-width: 768px){
+    
 }
