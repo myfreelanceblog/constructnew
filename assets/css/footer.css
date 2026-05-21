@@ -65,19 +65,13 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
 }
-.footer-menu__item{
-    border-left: 1px solid var(--light-black);
-}
 .footer-menu__title{
     text-transform: uppercase;
     text-decoration: none;
-    padding: 4px 0 4px 13px;
-    border-left: 3px solid var(--light-black);
     display: block;
 }
 .footer-contacts,
 .footer-menu__list{
-    padding: 16px 0 4px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;

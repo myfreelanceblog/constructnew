@@ -198,7 +198,6 @@
     font-weight: 700;
     text-transform: uppercase;
 }
-.dropdown-menu .sub-menu li.show-mob>a,
 .dropdown-menu .sub-menu li.show>a,
 .dropdown-menu .sub-menu a:hover {
     background: var(--light-accent);
@@ -260,6 +259,10 @@
 }
 
 @media all and (max-width: 992px){
+    .dropdown-menu .sub-menu li.show-mob>a{
+        background: var(--light-accent);
+        color: var(--light-white);
+    }
     .header{
         display: flex;
         flex-direction: column;

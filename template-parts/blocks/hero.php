@@ -38,13 +38,13 @@
                                     <div class="hero-info__img">
                                         <img src="assets/img/content/hero-info.png" alt="construct">
                                     </div>
-                                    <div class="hero-info__content">
-                                        <div class="hero-pointer hero-pointer--top"><span></span></div>
-                                        <div class="hero-info__text">
-                                            <div class="hero-info__title">1000+</div>
-                                            <div class="hero-info__desc">клиентов по всей РФ</div>
+                                    <div class="info">
+                                        <div class="info-pointer info-pointer--top"><span></span></div>
+                                        <div class="info__text">
+                                            <div class="info__title">1000+</div>
+                                            <div class="info__desc">клиентов по всей РФ</div>
                                         </div>
-                                        <div class="hero-pointer hero-pointer--bottom"><span></span></div>
+                                        <div class="info-pointer info-pointer--bottom"><span></span></div>
                                     </div>
                                 </div>
                                 <?php endif; ?>
@@ -77,8 +77,8 @@
         </div>
     </div>
     <div class="hero-numb">
-        <div class="hero-numb__content">
-            <div class="hero-numb__text">
+        <div class="trapeze">
+            <div class="trapeze__text">
                 <span class="hero-numb__start">01</span>
                 <span>/</span>
                 <span class="hero-numb__end"><?= format_number_slides(count($slides)) ?></span>

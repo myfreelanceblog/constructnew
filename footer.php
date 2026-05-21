@@ -31,36 +31,40 @@
                 ?>
                 <div class="footer-menu">
                     <?php foreach($nav as $title => $items): ?>
-                    <div class="footer-menu__item">
-                        <a href="javascript:void(0);" class="footer-menu__title h5"><?= $title ?></a>
-                        <ul class="footer-menu__list">
-                            <?php foreach($items as $item): ?>
-                            <li><a href="javascript:void(0);"><?= $item ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
+                    <div class="footer-menu__item accent-line">
+                        <a href="javascript:void(0);" class="footer-menu__title h5 accent-line__title"><?= $title ?></a>
+                        <div class="accent-line__desc">
+                            <ul class="footer-menu__list">
+                                <?php foreach($items as $item): ?>
+                                <li><a href="javascript:void(0);"><?= $item ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
                     <?php endforeach; ?>
 
-                    <div class="footer-menu__item">
-                        <div class="footer-menu__title h5">Контакты</div>
-                        <ul class="footer-contacts">
-                            <div class="footer-contacts__item">
-                                <a href="tel:+7-912-048-89-98" class="footer-contacts__title">+7-912-048-89-98</a>
-                                <div class="footer-contacts__desc">Номер телефона</div>
-                            </div>
-                            <div class="footer-contacts__item">
-                                <a href="mailto:constructpc.ekb@gmail.com" class="footer-contacts__title">constructpc.ekb@gmail.com</a>
-                                <div class="footer-contacts__desc">Сотрудничество</div>
-                            </div>
-                            <div class="footer-contacts__item">
-                                <div class="footer-contacts__title">Ежедневно, с 9:00 до 18:00 (МСК)</div>
-                                <div class="footer-contacts__desc">Режим работы</div>
-                            </div>
-                            <div class="footer-contacts__item">
-                                <div class="footer-contacts__title">г. Екатеринбург, ул. Шефская, 4 «А»</div>
-                                <div class="footer-contacts__desc">Адрес, прием по предварительной записи</div>
-                            </div>
-                        </ul>
+                    <div class="footer-menu__item accent-line">
+                        <div class="footer-menu__title h5 accent-line__title">Контакты</div>
+                        <div class="accent-line__desc">
+                            <ul class="footer-contacts">
+                                <div class="footer-contacts__item">
+                                    <a href="tel:+7-912-048-89-98" class="footer-contacts__title">+7-912-048-89-98</a>
+                                    <div class="footer-contacts__desc">Номер телефона</div>
+                                </div>
+                                <div class="footer-contacts__item">
+                                    <a href="mailto:constructpc.ekb@gmail.com" class="footer-contacts__title">constructpc.ekb@gmail.com</a>
+                                    <div class="footer-contacts__desc">Сотрудничество</div>
+                                </div>
+                                <div class="footer-contacts__item">
+                                    <div class="footer-contacts__title">Ежедневно, с 9:00 до 18:00 (МСК)</div>
+                                    <div class="footer-contacts__desc">Режим работы</div>
+                                </div>
+                                <div class="footer-contacts__item">
+                                    <div class="footer-contacts__title">г. Екатеринбург, ул. Шефская, 4 «А»</div>
+                                    <div class="footer-contacts__desc">Адрес, прием по предварительной записи</div>
+                                </div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-line"></div>

@@ -40,45 +40,6 @@
     gap: 16px;
     width: fit-content;
 }
-.hero-info__content{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 8px;
-}
-.hero-info__text{
-    font-family: var(--second-family);
-    font-weight: 700;
-    font-size: 16px;
-}
-.hero-info__desc{
-    color: var(--light-accent);
-}
-.hero-pointer{
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    align-items: center;
-}
-.hero-pointer::before,
-.hero-pointer::after{
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background: var(--light-black);
-}
-.hero-pointer span{
-    background-color: var(--light-stroke);
-    height: 1px;
-    width: auto;
-    display: block;
-    flex: auto;
-}
-.hero-pointer--top::after,
-.hero-pointer--bottom::before{
-    background: var(--light-light-gray);
-}
 .hero-item__bottom{
     display: flex;
     flex-direction: column;
@@ -128,40 +89,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.hero-numb__content{
-    position: relative;
-    display: flex;
-}
-.hero-numb__text{
-    background: var(--light-black);
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 143%;
-    color: var(--light-white);
-    width: 106px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 6px 16px;
-    height: 32px;
-}
-.hero-numb__content::before,
-.hero-numb__content::after {
-    content: '';
-    display: block;
-    top: 0;
-    width: 0;
-    height: 0;
-    border-bottom: 32px solid var(--light-black);
-    
-}
-.hero-numb__content::before{
-    border-left: 20px solid transparent;
-}
-.hero-numb__content::after{
-    border-right: 20px solid transparent;
+    pointer-events: none;
 }
 .hero-item__img{
     display: flex;
@@ -181,6 +109,12 @@
 }
 .hero__wrap .container{
     height: 100%;
+}
+
+@media all and (max-width: 1200px){
+    .hero-item__title{
+        font-size: clamp(32px, 3.3vw, 40px);
+    }
 }
 
 @media all and (max-width: 992px){
@@ -221,13 +155,12 @@
         right: unset;
         bottom: 24px;
     }
-    .hero-numb__content::after{
-        display: none;
-    }
     .hero-numb{
         justify-content: flex-end;
     }
-    
+    .hero-numb .trapeze::after{
+        display: none;
+    }
 }
 
 @media all and (max-width: 768px){

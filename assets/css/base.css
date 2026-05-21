@@ -103,7 +103,7 @@ h2,
     font-family: var(--font-family);
     font-weight: 700;
     font-size: 32px;
-    line-height: 119%;
+    line-height: 1.19;
 }
 h3,
 .h3{
@@ -111,9 +111,9 @@ h3,
     font-size: 24px;
     line-height: 125%;
 }
-h,
+h4,
 .h4{
-    font-family: var(--font-family);
+    font-family: var(--second-family);
     font-weight: 700;
     font-size: 20px;
 }
@@ -136,7 +136,7 @@ div.swiper-slide{
     }
     h1,
     .h1{
-        font-size: clamp(32px, 3.3vw, 40px);
+        font-size: clamp(28px, 3.3vw, 40px);
         line-height: 1.19;
     }
     h2,

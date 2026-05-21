@@ -105,7 +105,7 @@ $(document).ready(function () {
         } else {
             body.removeClass('body-scroll');
         }
-
+        
         updateBackdropHeight();
     }
 

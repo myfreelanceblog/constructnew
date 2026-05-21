@@ -1,0 +1,33 @@
+.new-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--light-stroke);
+}
+.new__box{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 32px;
+}
+.new__btn--mob{
+    display: none;
+}
+
+@media all and (max-width: 768px){
+    .new__box{
+        display: flex;
+        flex-direction: column;
+    }
+    .new-top .new__btn{
+        display: none;
+    }
+    .new__btn--mob{
+        display: flex;
+    }
+    .new__box{
+        padding: 32px 0;
+    }
+}
