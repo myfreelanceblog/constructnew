@@ -27,13 +27,19 @@ include 'functions.php';
 	<link rel="stylesheet" href="assets/css/header.css<?php echo $dev; ?>" />
 	<link rel="stylesheet" href="assets/css/hero.css<?php echo $dev; ?>" />
 	<link rel="stylesheet" href="assets/css/best.css<?php echo $dev; ?>" />
+	<link rel="stylesheet" href="assets/css/hit.css<?php echo $dev; ?>" />
+
+    <!-- подключать только на определенных страницах блог, полезное и т.п. компонент -->
+	<link rel="stylesheet" href="assets/css/components/card-item.css<?php echo $dev; ?>" />
 
 	<link rel="stylesheet" href="assets/css/why.css<?php echo $dev; ?>" />
+	<link rel="stylesheet" href="assets/css/how.css<?php echo $dev; ?>" />
     
 	<link rel="stylesheet" href="assets/css/new.css<?php echo $dev; ?>" />
 
     <!-- подключать только на определенных страницах блог, полезное и т.п. компонент -->
 	<link rel="stylesheet" href="assets/css/components/news-item.css<?php echo $dev; ?>" />
+    <link rel="stylesheet" href="assets/css/install.css<?php echo $dev; ?>" />
 
 	<link rel="stylesheet" href="assets/css/footer.css<?php echo $dev; ?>" />
 	

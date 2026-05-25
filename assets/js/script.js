@@ -112,9 +112,50 @@ $(document).ready(function () {
     $(window).on('scroll', checkScroll);
 
     checkScroll();
+
+    const $items = $('.how-item');
+    function updateActiveItem() {
+
+        const windowCenter = $(window).height() / 2;
+        let currentItem = null;
+        let closestOffset = Infinity;
+
+        $items.each(function () {
+            const $item = $(this);
+            const rect = this.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const offset = Math.abs(windowCenter - itemCenter);
+            if (offset < closestOffset) {
+                closestOffset = offset;
+                currentItem = $item;
+            }
+        });
+        $items.removeClass('active');
+        if (currentItem) {
+            currentItem.addClass('active');
+        }
+    }
+    updateActiveItem();
+    $(window).on('scroll resize', updateActiveItem);
 });
 
 function initSliders() {
+    function updateButtons(swiper, label, slider) {
+        const nextButtons = slider.querySelectorAll('.' + label + '__next');
+        const prevButtons = slider.querySelectorAll('.' + label + '__prev');
+
+        const current = swiper.activeIndex;
+        const last = swiper.slides.length - 1;
+
+        prevButtons.forEach(btn => {
+            btn.classList.toggle('disabled', current === 0);
+        });
+
+        nextButtons.forEach(btn => {
+            btn.classList.toggle('disabled', current === last);
+        });
+    }
+    
     const heroLabel = 'hero';
     const hero = document.querySelectorAll('.' + heroLabel);
     if (hero.length > 0) {
@@ -140,18 +181,17 @@ function initSliders() {
                     on: {
                         init: function () {
                             updateNumbers(this);
-                            updateButtons(this);
+                            updateButtons(this, heroLabel, slider);
                         },
                         slideChange: function () {
                             updateNumbers(this);
-                            updateButtons(this);
+                            updateButtons(this, heroLabel, slider);
                         },
                         reachEnd: function () {
                             setTimeout(() => {
                                 this.slideTo(0);
                             }, 4000);
                         }
-
                     }
                 });
 
@@ -180,22 +220,144 @@ function initSliders() {
                         totalEl.textContent = String(total).padStart(2, '0');
                     }
                 }
+            }
+        });
+    }
+    
+    const installLabel = 'install';
+    const install = document.querySelectorAll('.' + installLabel);
+    if (install.length > 0) {
+        install.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + installLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 1,
+                    roundLengths: true,
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                    on: {
+                        init: function () {
+                            updateButtons(this, installLabel, slider);
+                        },
+                        slideChange: function () {
+                            updateButtons(this, installLabel, slider);
+                        }
+                    }
+                });
 
-                function updateButtons(swiper) {
-                    const nextButtons = slider.querySelectorAll('.' + heroLabel + '__next');
-                    const prevButtons = slider.querySelectorAll('.' + heroLabel + '__prev');
+                slider.addEventListener('click', function (e) {
+                    const nextButton = e.target.closest('.' + installLabel + '__next');
+                    const prevButton = e.target.closest('.' + installLabel + '__prev');
 
-                    const current = swiper.activeIndex;
-                    const last = swiper.slides.length - 1;
+                    if (nextButton) {
+                        e.preventDefault();
+                        swiper.slideNext();
+                    }
 
-                    prevButtons.forEach(btn => {
-                        btn.classList.toggle('disabled', current === 0);
-                    });
+                    if (prevButton) {
+                        e.preventDefault();
+                        swiper.slidePrev();
+                    }
+                });
+            }
+        });
+    }
 
-                    nextButtons.forEach(btn => {
-                        btn.classList.toggle('disabled', current === last);
+    const hitLabel = 'hit';
+    document.querySelectorAll('.' + hitLabel).forEach(function (slider) {
+        const swiperContainer = slider.querySelector('.' + hitLabel + '__swiper');
+
+        if (!swiperContainer) return;
+
+        let swiper = null;
+
+        function checkHitSlider() {
+            if (window.innerWidth > 768) {
+                if (!swiper) {
+                    swiperContainer.classList.remove('grid');
+
+                    swiper = new Swiper(swiperContainer, {
+                        loop: false,
+                        slidesPerView: 3,
+                        roundLengths: true,
+                        navigation: {
+                            nextEl: slider.querySelector('.' + hitLabel + '__next'),
+                            prevEl: slider.querySelector('.' + hitLabel + '__prev'),
+                        },
+                        allowTouchMove: false,
+                        spaceBetween: 20,
+                        breakpoints: {
+                            0: { slidesPerView: 'auto' },
+                            1200: { slidesPerView: 3 },
+                        },
                     });
                 }
+            } else {
+                swiperContainer.classList.add('grid');
+
+                if (swiper) {
+                    swiper.destroy(true, true);
+                    swiper = null;
+                }
+            }
+        }
+
+        checkHitSlider();
+        window.addEventListener('resize', checkHitSlider);
+    });
+
+    const cardItemLabel = 'card-item';
+    const cardItem = document.querySelectorAll('.' + cardItemLabel);
+    const isDesktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (cardItem.length > 0) {
+        cardItem.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + cardItemLabel + '__swiper');
+            const wrapSlider = slider.querySelector('.' + cardItemLabel + '__slider');
+            
+            if (swiperContainer) {
+                const pagination = slider.querySelector('.' + cardItemLabel + '__pagination');
+                
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 1,
+                    roundLengths: true,
+                    pagination: {
+                        el: pagination,
+                        clickable: true,
+                    },
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                });
+
+                if (isDesktop) {
+                    wrapSlider.addEventListener('mousemove', function (e) {
+                        const rect = slider.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const percent = x / rect.width;
+
+                        let targetIndex = Math.floor(percent * swiper.slides.length);
+
+                        if (targetIndex < 0) targetIndex = 0;
+                        if (targetIndex >= swiper.slides.length) {
+                            targetIndex = swiper.slides.length - 1;
+                        }
+
+                        if (swiper.activeIndex !== targetIndex) {
+                            swiper.slideTo(targetIndex);
+                        }
+                    });
+
+                    wrapSlider.addEventListener('mouseleave', function () {
+                        swiper.slideTo(0);
+                    });
+                }
+                
             }
         });
     }

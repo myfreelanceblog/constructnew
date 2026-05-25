@@ -1,0 +1,25 @@
+.hit__swiper:not(.swiper-initialized) > .swiper-wrapper{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.hit-slider{
+    padding-top: 32px;
+}
+
+@media all and (max-width: 1200px){
+    .hit__swiper > .swiper-wrapper > .swiper-slide{
+        max-width: 424px;
+    }
+}
+
+@media all and (max-width: 768px){
+    .hit__swiper.grid > .swiper-wrapper,
+    .hit__swiper:not(.swiper-initialized) > .swiper-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+    .hit__swiper > .swiper-wrapper > .swiper-slide{
+        max-width: 100%;
+    }
+}

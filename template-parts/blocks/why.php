@@ -66,9 +66,9 @@
                     <?php endif; ?>
 
                     <?php if (isset($item['btn'])) : ?>
-                    <button class="border-side btn-white" type="button" aria-label="Собрать надёжный ПК" data-modal="config">
-                        <div class="btn-white__icon"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#garant"></use></svg></div>
-                        <div class="btn-white__title">Собрать надёжный ПК</div>
+                    <button class="border-side btn-secondary" type="button" aria-label="Собрать надёжный ПК" data-modal="config">
+                        <div class="btn-secondary__icon"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#garant"></use></svg></div>
+                        <div class="btn-secondary__title">Собрать надёжный ПК</div>
                     </button>
                     <?php endif; ?>
 

@@ -48,12 +48,12 @@
                         <div class="best-item__bottom">
                             <div class="best-item__img"><img src="<?= $item['img']; ?>" alt="<?= $item['ttl']; ?>" loading="lazy"></div>
                             <?php if($item['type'] == 'btn'): ?>
-                            <button class="best-item__btn border-side btn-white" type="button" aria-label="<?= $item['btn']; ?>" data-modal="config">
+                            <button class="best-item__btn border-side btn-secondary" type="button" aria-label="<?= $item['btn']; ?>" data-modal="config">
                             <?php else: ?>
-                            <a href="javascript:void(0);" class="best-item__btn border-side btn-white">
+                            <a href="javascript:void(0);" class="best-item__btn border-side btn-secondary">
                             <?php endif; ?>
-                                <div class="btn-white__icon"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#<?= $item['icon'] ?>"></use></svg></div>
-                                <div class="btn-white__title"><?= $item['btn']; ?></div>
+                                <div class="btn-secondary__icon"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#<?= $item['icon'] ?>"></use></svg></div>
+                                <div class="btn-secondary__title"><?= $item['btn']; ?></div>
                             <?php if($item['type'] != 'btn'): ?>
                             </a>
                             <?php else: ?>

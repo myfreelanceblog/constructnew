@@ -70,12 +70,17 @@
     transition: all 0.3s;
     padding: 2px 3px;
     display: flex;
+    cursor: pointer;
 }
 .btn__content{
     background: var(--light-accent);
     color: var(--light-white);
     width: 100%;
     padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     transition: all 0.3s;
 }
 .btn:hover .btn__content{
@@ -85,6 +90,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+    width: fit-content;
 }
 .nav__item{
     border-radius: 4px;
@@ -108,10 +114,15 @@
 .nav__next svg{
     transform: rotate(-90deg);
 }
+.nav__item.swiper-button-disabled,
 .nav__item.disabled{
     background: var(--light-white);
     color: var(--light-light-gray);
     cursor: default;
+}
+.nav--gray .nav__item.swiper-button-disabled,
+.nav--gray .nav__item.disabled{
+    background: var(--light-background);
 }
 .info{
     display: flex;
@@ -149,8 +160,8 @@
     font-weight: 700;
     font-size: 16px;
 }
-.btn-white:hover,
-.btn-white__icon,
+.btn-secondary:hover,
+.btn-secondary__icon,
 .info__desc{
     color: var(--light-accent);
 }
@@ -184,7 +195,7 @@
     background: var(--light-black);
     flex: 1;
 }
-.btn-white{
+.btn-secondary{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,11 +209,18 @@
     font-size: 16px;
     transition: all 0.3s;
 }
-.btn-white__title{
+.btn-secondary--transparent{
+    border: none;
+    background: none;
+}
+.btn-secondary--transparent .btn-secondary__icon{
+    color: inherit;
+}
+.btn-secondary__title{
     display: flex;
     align-items: center;
 }
-.btn-white__title::before {
+.btn-secondary__title::before {
     content: '';
     background: var(--light-stroke);
     height: 24px;
@@ -325,7 +343,102 @@ body::-webkit-scrollbar-thumb:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 0.3s;
 }
+.top{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 104px;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 16px;
+    position: relative;
+    border-bottom: 1px solid var(--light-stroke);
+}
+.colors{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.colors__item{
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+}
+.colors__item.active{
+    border-color: var(--light-accent);
+}
+.colors__item::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+}
+.color-black::before{
+    background: #162640;
+}
+.color-orange::before{
+    background: #edc620;
+}
+.color-white::before{
+    background: var(--light-white);
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--light-stroke);
+}
+.options__item{
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--light-stroke);
+}
+.options__icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.options__icon::before{
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 32px;
+    width: 1px;
+    background-color: var(--light-light-gray);
+    top: 50%;
+    transform: translateY(-50%);
+}
+.options__icon img{
+    max-width: 24px;
+}
+.options__content{
+    text-align: left;
+}
+.options__title{
+    color: var(--light-gray);
+}
+.options__desc{
+    font-weight: 600;
+}
+
 
 @media all and (max-width: 992px){
     .title-ui{
@@ -347,8 +460,14 @@ body::-webkit-scrollbar-thumb:hover {
         height: 100%;
         width: 2px;
     }
-    .btn-white{
+    .btn-secondary{
         padding: 16px;
+    }
+    .top__nav{
+        display: none;
+    }
+    .top{
+        display: flex;
     }
 }
 
