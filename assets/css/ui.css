@@ -1,4 +1,7 @@
-﻿.border-side{
+﻿.gray{
+    background: var(--light-background);
+}
+.border-side{
     position: relative;
 }
 .border-side::before,
@@ -83,8 +86,22 @@
     gap: 16px;
     transition: all 0.3s;
 }
+.btn--white .btn__content{
+    background: var(--light-white);
+    color: var(--light-black);
+}
 .btn:hover .btn__content{
     background: var(--hover);
+}
+.btn--white:hover .btn__content,
+.btn--white .pointer__bottom:before,
+.btn--white .pointer__bottom:after,
+.btn--white .pointer__top:before,
+.btn--white .pointer__top:after{
+    background: var(--light-white);
+}
+.btn--white:hover .btn__content{
+    color: var(--light-accent);
 }
 .nav{
     display: grid;
@@ -335,6 +352,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 .img-absolute{
     position: relative;
+    overflow: hidden;
 }
 .img-absolute img{
     position: absolute;
@@ -344,6 +362,9 @@ body::-webkit-scrollbar-thumb:hover {
     height: 100%;
     object-fit: cover;
     transition: all 0.3s;
+}
+.img-hover:hover img{
+    transform: scale(1.05);
 }
 .top{
     display: grid;
@@ -438,7 +459,25 @@ body::-webkit-scrollbar-thumb:hover {
 .options__desc{
     font-weight: 600;
 }
-
+.pagination-ui{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 24px;
+    gap: 8px;
+}
+.pagination-ui .swiper-pagination-bullet{
+    margin: 0 !important;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--light-background);
+    transition: all 0.3s;
+}
+.pagination-ui .swiper-pagination-bullet-active{
+    background: var(--light-accent);
+}
 
 @media all and (max-width: 992px){
     .title-ui{

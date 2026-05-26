@@ -139,6 +139,71 @@ $(document).ready(function () {
     $(window).on('scroll resize', updateActiveItem);
 });
 
+document.querySelectorAll('.faq-box__item').forEach(function(box) {
+    const firstItem = box.querySelector('.faq-box__item.active .faq-item');
+    if (firstItem) {
+        const firstAnswer = firstItem.querySelector('.faq-item__answer');
+        firstItem.classList.add('active');
+        firstAnswer.style.height = firstAnswer.scrollHeight + 'px';
+    }
+    box.querySelectorAll('.faq-item').forEach(function(item) {
+        const title = item.querySelector('.faq-item__title');
+        const icon = item.querySelector('.faq-item__icon');
+        const answer = item.querySelector('.faq-item__answer');
+        function openFaq() {
+            box.querySelectorAll('.faq-item.active').forEach(function(activeItem) {
+                if (activeItem !== item) {
+                    const activeAnswer = activeItem.querySelector('.faq-item__answer');
+                    activeItem.classList.remove('active');
+                    activeAnswer.style.height = activeAnswer.scrollHeight + 'px';
+                    requestAnimationFrame(function() {
+                        activeAnswer.style.height = '0px';
+                    });
+                }
+            });
+            item.classList.add('active');
+            answer.style.height = answer.scrollHeight + 'px';
+        }
+        function closeFaq() {
+            item.classList.remove('active');
+            answer.style.height = answer.scrollHeight + 'px';
+            requestAnimationFrame(function() {
+                answer.style.height = '0px';
+            });
+        }
+        function toggleFaq() {
+            if (item.classList.contains('active')) {
+                closeFaq();
+            } else {
+                openFaq();
+            }
+        }
+        if (title) {
+            title.addEventListener('click', toggleFaq);
+        }
+        if (icon) {
+            icon.addEventListener('click', toggleFaq);
+        }
+    });
+});
+
+const faqTabs = document.querySelectorAll('.faq-tab__item');
+const faqItems = document.querySelectorAll('.faq-box__item');
+faqTabs.forEach(function(tab, index) {
+    tab.addEventListener('click', function() {
+        faqTabs.forEach(function(item) {
+            item.classList.remove('active');
+        });
+        faqItems.forEach(function(item) {
+            item.classList.remove('active');
+        });
+        tab.classList.add('active');
+        if (faqItems[index]) {
+            faqItems[index].classList.add('active');
+        }
+    });
+});
+
 function initSliders() {
     function updateButtons(swiper, label, slider) {
         const nextButtons = slider.querySelectorAll('.' + label + '__next');
@@ -152,7 +217,7 @@ function initSliders() {
         });
 
         nextButtons.forEach(btn => {
-            btn.classList.toggle('disabled', current === last);
+            btn.classList.toggle('disabled', ((current === last) || swiper.isEnd));
         });
     }
     
@@ -223,6 +288,51 @@ function initSliders() {
             }
         });
     }
+
+    const revLabel = 'rev';
+    const rev = document.querySelectorAll('.' + revLabel);
+    if (rev.length > 0) {
+        rev.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + revLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 2,
+                    roundLengths: true,
+                    spaceBetween: 20,
+                    allowTouchMove: false,
+                    breakpoints: {
+                        0: { slidesPerView: 1 },
+                        992: { slidesPerView: 2 },
+                    },
+                    on: {
+                        init: function () {
+                            updateButtons(this, revLabel, slider);
+                        },
+                        slideChange: function () {
+                            updateButtons(this, revLabel, slider);
+                        },
+                    }
+                });
+
+                slider.addEventListener('click', function (e) {
+                    const nextButton = e.target.closest('.' + revLabel + '__next');
+                    const prevButton = e.target.closest('.' + revLabel + '__prev');
+
+                    if (nextButton) {
+                        e.preventDefault();
+                        swiper.slideNext();
+                    }
+
+                    if (prevButton) {
+                        e.preventDefault();
+                        swiper.slidePrev();
+                    }
+                });
+            }
+        });
+    }
     
     const installLabel = 'install';
     const install = document.querySelectorAll('.' + installLabel);
@@ -262,6 +372,61 @@ function initSliders() {
                         e.preventDefault();
                         swiper.slidePrev();
                     }
+                });
+            }
+        });
+    }
+
+    const mediaLabel = 'media';
+    const media = document.querySelectorAll('.' + mediaLabel);
+    if (media.length > 0) {
+        media.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + mediaLabel + '__swiper');
+            const pagination = slider.querySelector('.' + mediaLabel + '__pagination');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 4,
+                    roundLengths: true,
+                    spaceBetween: 20,
+                    pagination: {
+                        el: pagination,
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        0: { slidesPerView: 1, spaceBetween: 8, },
+                        568: { slidesPerView: 2, spaceBetween: 8, },
+                        768: { slidesPerView: 3, spaceBetween: 16, },
+                        992: { slidesPerView: 4, spaceBetween: 20, },
+                    },
+                });
+            }
+        });
+    }
+    
+    const partnersLabel = 'partners';
+    const partners = document.querySelectorAll('.' + partnersLabel);
+    if (partners.length > 0) {
+        partners.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + partnersLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: true,
+                    slidesPerView: 6,
+                    roundLengths: true,
+                    spaceBetween: 20,
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    breakpoints: {
+                        0: { slidesPerView: 2, spaceBetween: 8, },
+                        568: { slidesPerView: 3, spaceBetween: 8, },
+                        768: { slidesPerView: 4, spaceBetween: 16, },
+                        992: { slidesPerView: 6, spaceBetween: 20, },
+                    },
                 });
             }
         });

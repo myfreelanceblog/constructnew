@@ -40,6 +40,11 @@ include 'functions.php';
     <!-- подключать только на определенных страницах блог, полезное и т.п. компонент -->
 	<link rel="stylesheet" href="assets/css/components/news-item.css<?php echo $dev; ?>" />
     <link rel="stylesheet" href="assets/css/install.css<?php echo $dev; ?>" />
+    <link rel="stylesheet" href="assets/css/faq.css<?php echo $dev; ?>" />
+    <link rel="stylesheet" href="assets/css/cta.css<?php echo $dev; ?>" />
+    <link rel="stylesheet" href="assets/css/rev.css<?php echo $dev; ?>" />
+    <link rel="stylesheet" href="assets/css/media.css<?php echo $dev; ?>" />
+    <link rel="stylesheet" href="assets/css/partners.css<?php echo $dev; ?>" />
 
 	<link rel="stylesheet" href="assets/css/footer.css<?php echo $dev; ?>" />
 	

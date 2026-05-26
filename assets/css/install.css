@@ -4,7 +4,7 @@
 }
 .install__title{
     position: relative;
-    padding-bottom: 22px;
+    padding-bottom: 24px;
     width: fit-content;
 }
 .install__title::after{
