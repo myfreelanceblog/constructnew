@@ -40,7 +40,7 @@
             ?>
             <div class="best-box">
                 <?php foreach ($best as $item): ?>
-                    <div class="best-item linear<?= ($item['style'] == 'wide') ? ' best-item--wide' : ''; ?>">
+                    <div class="best-item linear linear--border<?= ($item['style'] == 'wide') ? ' best-item--wide' : ''; ?>">
                         <div class="best-item__top accent-line">
                             <div class="accent-line__title h2 best-item__title"><?= $item['ttl']; ?></div>
                             <div class="accent-line__desc"><?= $item['desc']; ?></div>

@@ -1,4 +1,4 @@
-<div class="card-item">
+<div class="card-item<?= ($i > 2) ? ' hidden' : '' ?>">
     <div class="card-item__top">
         <a href="javascript:void(0);" class="card-item__slider">
             <div class="card-item__swiper swiper">

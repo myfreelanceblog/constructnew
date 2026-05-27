@@ -1,7 +1,7 @@
 <section class="why-section">
     <div class="container">
         <div class="why pad">
-            <h2 class="h1 why__title">Почему выбирают <span>Construct</span>_PC</h2>
+            <h2 class="h1 title-side">Почему выбирают <span>Construct</span>_PC</h2>
 
             <?php
             $why_items = [
@@ -55,7 +55,7 @@
                 <?php
                 $is_blue = (isset($item['style']) && $item['style'] == 'blue') ? ' why-box__item--blue' : '';
                 ?>
-                <div class="why-box__item why-item<?= $index ?> linear<?php echo $is_blue; ?>">
+                <div class="why-box__item why-item<?= $index ?> linear linear--border<?php echo $is_blue; ?>">
                     <?php if (!empty($item['img'])) : ?>
                     <div class="why-box__img">
                         <picture>

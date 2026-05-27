@@ -218,9 +218,6 @@
 .mob-m{
     display: none;
 }
-.menu-showed{
-    overflow: hidden;
-}
 
 @media all and (min-width: 992px){
     .dropdown-menu .menu-item-has-children.show > .sub-menu,

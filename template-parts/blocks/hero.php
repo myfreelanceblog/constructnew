@@ -49,7 +49,7 @@
                                 </div>
                                 <?php endif; ?>
                                 <div class="hero-item__bottom">
-                                    <h1 class="hero-item__title h1"><span><?= $item['title'] ?></span></h1>
+                                    <h1 class="hero-item__title h1 title-rec uppercase"><span><?= $item['title'] ?></span></h1>
                                     <div class="hero-item__desc"><?= $item['desc'] ?></div>
                                     <a href="javascript:void(0);" class="btn hero-item__btn pointer">
                                         <div class="pointer__top"></div>

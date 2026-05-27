@@ -1,11 +1,3 @@
-.why__title{
-    position: relative;
-    border-left: 4px solid var(--light-accent);
-    padding: 4px 0px 4px 24px;
-}
-.why__title span{
-    color: var(--light-accent);
-}
 .why-box{
     padding-top: 32px;
     display: grid;
