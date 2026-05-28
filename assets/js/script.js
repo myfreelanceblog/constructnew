@@ -140,10 +140,14 @@ $(document).ready(function () {
 });
 
 document.querySelectorAll('[data-modal]').forEach(function(item) {
-    item.addEventListener('click', function() {
+    item.addEventListener('click', function () {
+        document.querySelectorAll('.modal').forEach(function(modal) {
+            modal.classList.remove('show');
+        });
         const modalClass = this.getAttribute('data-modal');
         const modal = document.querySelector('.modal-' + modalClass);
         if (!modal) return;
+        document.body.classList.add('lock');
         modal.classList.add('show');
         const title = this.getAttribute('data-title');
         if (title && title !== '') {
@@ -154,18 +158,148 @@ document.querySelectorAll('[data-modal]').forEach(function(item) {
         }
     });
 });
-document.querySelectorAll('.modal__close, .overlay').forEach(function(item) {
+document.querySelectorAll('.close-modal, .overlay').forEach(function(item) {
     item.addEventListener('click', function() {
         document.querySelectorAll('.modal').forEach(function(modal) {
             modal.classList.remove('show');
         });
+
+        document.body.classList.remove('lock');
+    });
+});
+
+document.addEventListener('change', function (e) {
+    if (!e.target.matches('.modal-radio input[type="radio"]')) {
+        return;
+    }
+    const modal = e.target.closest('.modal');
+    const id = e.target.dataset.id;
+    const items = modal.querySelectorAll('.connection-fields__item');
+    items.forEach(function (item) {
+        item.classList.remove('active');
+        const input = item.querySelector('input');
+        if (input) {
+            input.disabled = true;
+        }
+    });
+    const activeItem = modal.querySelector('.connection-fields__item[data-id="' + id + '"]');
+    if (activeItem) {
+        activeItem.classList.add('active');
+        const input = activeItem.querySelector('input');
+        if (input) {
+            input.disabled = false;
+        }
+    }
+});
+document.querySelectorAll('.modal').forEach(function (modal) {
+    const checked = modal.querySelector('.modal-radio input[type="radio"]:checked');
+    if (!checked) {
+        return;
+    }
+    const id = checked.dataset.id;
+    modal.querySelectorAll('.connection-fields__item').forEach(function (item) {
+        const input = item.querySelector('input');
+        item.classList.remove('active');
+        if (input) {
+            input.disabled = true;
+        }
+    });
+    const activeItem = modal.querySelector('.connection-fields__item[data-id="' + id + '"]');
+    if (activeItem) {
+        activeItem.classList.add('active');
+        const input = activeItem.querySelector('input');
+        if (input) {
+            input.disabled = false;
+        }
+    }
+});
+
+const selects = document.querySelectorAll("select.custom-select-original");
+selects.forEach(originalSelect => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "custom-select-wrapper";
+
+    const display = document.createElement("div");
+    display.className = "custom-select-display";
+
+    const displayText = document.createElement("span");
+    displayText.textContent = originalSelect.options[originalSelect.selectedIndex]?.text || "Выберите";
+    display.appendChild(displayText);
+
+    const optionsList = document.createElement("div");
+    optionsList.className = "custom-select-options";
+
+    const optionsWrap = document.createElement("div");
+    optionsWrap.className = "custom-select-options__wrap";
+
+    Array.from(originalSelect.options).forEach(option => {
+        const optionDiv = document.createElement("div");
+        optionDiv.className = "custom-select-option";
+        optionDiv.textContent = option.text;
+        optionDiv.dataset.value = option.value;
+
+        if (option.selected) {
+            optionDiv.classList.add("selected");
+        }
+
+        optionDiv.addEventListener("click", () => {
+            displayText.textContent = option.text;
+            originalSelect.value = option.value;
+            originalSelect.dispatchEvent(new Event("change"));
+
+            optionsWrap.querySelectorAll(".custom-select-option").forEach(opt => opt.classList.remove("selected"));
+            optionDiv.classList.add("selected");
+
+            wrapper.classList.remove("active");
+        });
+
+        optionsWrap.appendChild(optionDiv);
+    });
+
+    optionsList.appendChild(optionsWrap);
+
+    display.addEventListener("click", e => {
+        e.stopPropagation();
+        const isActive = wrapper.classList.contains("active");
+        document.querySelectorAll(".custom-select-wrapper.active").forEach(w => w.classList.remove("active"));
+        if (!isActive) {
+            wrapper.classList.add("active");
+        }
+    });
+
+    wrapper.appendChild(display);
+    wrapper.appendChild(optionsList);
+    originalSelect.parentNode.insertBefore(wrapper, originalSelect);
+
+    if (originalSelect.value) {
+        display.classList.add("selected");
+    }
+
+    originalSelect.addEventListener("change", () => {
+        const selectedOption = originalSelect.options[originalSelect.selectedIndex];
+        displayText.textContent = selectedOption.text;
+
+        optionsWrap.querySelectorAll(".custom-select-option").forEach(opt => {
+            opt.classList.toggle("selected", opt.dataset.value === selectedOption.value);
+        });
+
+        if (selectedOption.value) {
+            display.classList.add("selected");
+        } else {
+            display.classList.remove("selected");
+        }
+    });
+});
+document.addEventListener("click", () => {
+    document.querySelectorAll(".custom-select-wrapper.active").forEach(w => {
+        w.classList.remove("active");
     });
 });
 
 let forCount = 0;
-document.querySelectorAll('.agree').forEach(function(item) {
+document.querySelectorAll('.check').forEach(function(item) {
     forCount++;
-    const label = item.querySelector('.agree__label');
+    const label = item.querySelector('.check__label');
     const input = item.querySelector('input');
     if (!label || !input) return;
     const forItem = label.getAttribute('for') + forCount;
@@ -173,15 +307,23 @@ document.querySelectorAll('.agree').forEach(function(item) {
     input.setAttribute('id', forItem);
 });
 document.addEventListener('change', function(e) {
-    const input = e.target.closest('.agree__input input');
+
+    const input = e.target.closest('.check__input input');
+
     if (!input) return;
-    const agree = input.closest('.agree');
-    if (!agree) return;
-    if (input.checked) {
-        agree.classList.add('active');
-    } else {
-        agree.classList.remove('active');
-    }
+
+    document.querySelectorAll('.check').forEach(function(check) {
+
+        const currentInput = check.querySelector('.check__input input');
+
+        if (!currentInput) return;
+
+        if (currentInput.checked) {
+            check.classList.add('active');
+        } else {
+            check.classList.remove('active');
+        }
+    });
 });
 
 document.addEventListener('click', function(e) {
