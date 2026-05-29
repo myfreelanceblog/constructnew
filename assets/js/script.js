@@ -97,6 +97,45 @@ $(document).ready(function () {
         return false;
     })
 
+    $('.config-nav__item').on('click', function(e){
+        const id = $(this).attr('data-id');
+        $('.config-nav__item').removeClass('active');
+        $(this).addClass('active');
+
+        $('.config-tab__item').removeClass('active');
+        $('#'+id).addClass('active');
+    })
+
+    $(document).on('click', '.config-category__item', function(e){
+        const parents = $(this).parents('.config-tab__item');
+        const cat = $(this).attr('data-cat');
+        $(parents).find('.config-category__item').removeClass('active');
+        $(this).addClass('active');
+
+        const el = $(parents).find('.config-choice__item[data-cat="' + cat + '"]');
+        if (el.length > 0) {
+            $(parents).find('.config-choice__item').each(function () {
+                if ($(this).attr('data-cat') != cat) {
+                    $(this).addClass('hidden');
+                } else {
+                    $(this).removeClass('hidden');
+                }
+            });
+        } else {
+            $(parents).find('.config-choice__item').removeClass('hidden');
+        }
+    })
+
+    $(document).on('click', '.config-choice__item', function(e){
+        const parents = $(this).parents('.config-tab__item');
+        $(parents).find('.config-choice__item').removeClass('active');
+        $(this).addClass('active');
+
+        const id = $(parents).attr('id');
+        const el = $('[data-id="' + id + '"]');
+        $(el).find('.config-nav__desc').html($(this).find('.config-choice__title').text());
+    })
+
     function checkScroll() {
         const body = $('body');
 
@@ -580,6 +619,50 @@ function initSliders() {
                         e.preventDefault();
                         swiper.slidePrev();
                     }
+                });
+            }
+        });
+    }
+
+    const configSliderLabel = 'config';
+    const configSlider = document.querySelectorAll('.' + configSliderLabel);
+    if (configSlider.length > 0) {
+        configSlider.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + configSliderLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                });
+
+                slider.addEventListener('click', function (e) {
+                    const nextButton = e.target.closest('.' + configSliderLabel + '__next');
+
+                    if (nextButton) {
+                        e.preventDefault();
+                        swiper.slideNext();
+                    }
+                });
+            }
+        });
+    }
+
+    const configCategoryLabel = 'config-category';
+    const configCategory = document.querySelectorAll('.' + configCategoryLabel);
+    if (configCategory.length > 0) {
+        configCategory.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + configCategoryLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 'auto',
+                    navigation: {
+                        nextEl: slider.querySelector('.' + configCategoryLabel + '__next'),
+                        prevEl: slider.querySelector('.' + configCategoryLabel + '__prev'),
+                    },
                 });
             }
         });

@@ -48,6 +48,23 @@
                 </div>
 
                 <div class="modal__line"><span></span></div>
+                
+                <?php
+                $config = config();
+                $i = 0;
+                ?>
+                <div class="config-nav">
+                    <?php foreach($config as $k => $item): $i++; ?>
+                    <button type="button" class="config-nav__item" data-id="config-<?= $k ?>">
+                        <div class="config-nav__icon"><img src="assets/img/content/c<?= $i ?>.svg" alt="<?= $k ?>" loading="lazy"></div>
+                        <div class="config-nav__content">
+                            <div class="config-nav__title h4"><?= $item['title'] ?></div>
+                            <div class="config-nav__desc"><?= $item['selected'] ?></div>
+                        </div>
+                        <div class="config-nav__arr"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></div>
+                    </button>
+                    <?php endforeach; ?>
+                </div>
             </div>
             <div class="config-item">
                 <div class="config-item__top">
@@ -62,6 +79,70 @@
                 </div>
 
                 <div class="modal__line"><span></span></div>
+                
+                <?php
+                $count_config = 0;
+                ?>
+                <div class="config-tab">
+                    <?php foreach($config as $k => $item): $count_config++; ?>
+                    <div class="config-tab__item" id="config-<?= $k ?>">
+                        <div class="config-tab__content">
+                            <?php
+                            $category = [
+                                'Все',
+                                'Powercase',
+                                'Deepcool',
+                                'MSI',
+                                'Ardor',
+                                'Asus',
+                                'Gigabyte',
+                            ];
+                            ?>
+                            <div class="config-category">
+                                <div class="config-category__swiper swiper">
+                                    <div class="swiper-wrapper">
+                                        <?php foreach($category as $c => $cat): ?>
+                                        <div class="swiper-slide">
+                                            <div class="config-category__item<?php if($c == 0){echo ' active';} ?>" data-cat="<?= $cat ?>"><?= $cat ?></div>
+                                        </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                                <button class="config-category__prev config-category__btn" type="button" aria-label="следующий производитель"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+                                <button class="config-category__next config-category__btn" type="button" aria-label="следующий производитель"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+                            </div>
+                            
+                            <?php if($count_config == 1): ?>
+                            <div class="config-custom">
+                                <div class="check">
+                                    <div class="check__input"><input type="checkbox" name="custom" value="yes"></div>
+                                    <label class="check__label"><div class="check__title">Нужна кастомизация</div></label>
+                                </div>
+                                <div class="config-custom__price">+ 5 000 ₽</div>
+                            </div>
+                            <?php endif; ?>
+
+                            <div class="config-choice">
+                                <?php foreach($item['items'] as $k_item => $choice): $key = $k_item + 1; if(!isset($category[$key])){$key = 1;} ?>
+                                <label class="config-choice__item<?php if($k_item == 0){echo ' active';} ?>" data-cat="<?= $category[$key] ?>">
+                                    <input type="radio" name="" value="" data-price="" data-category="" data-item-id="">
+                                    <div class="config-choice__top">
+                                        <div class="config-choice__img img-absolute">
+                                            <img src="assets/img/content/card1.webp" alt="choice" loading="lazy">
+                                        </div>
+                                        <div class="config-choice__title"><?= $choice['title'] ?></div>
+                                    </div>
+                                    <div class="config-choice__price">
+                                        <span>+ <?= $choice['price'] ?> ₽</span>
+                                        <span>Выбрано</span>
+                                    </div>
+                                </label>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
         <div class="config-bottom">
