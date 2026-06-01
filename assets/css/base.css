@@ -327,6 +327,17 @@ div.swiper-slide{
     opacity: 0;
     transition: all 0.3s;
 }
+.agree .check__label:before{
+    width: 24px;
+    height: 24px;
+}
+.agree .check__label:after{
+    width: 20px;
+    height: 20px;
+}
+.agree .check__label{
+    grid-template-columns: 24px minmax(0, 1fr);
+}
 .check.active .check__label:after{
     opacity: 1;
 }
@@ -554,6 +565,7 @@ body.lock{
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;  
     overflow: hidden;
+    color: var(--light-black);
 }
 .config-nav__desc{
     font-family: var(--font-family);
@@ -697,6 +709,10 @@ body.lock{
     background: var(--light-white);
     text-align: center;
 }
+.config-tab__item,
+.config-choice__item.hidden,
+.config-mob-navigation,
+.category-item__content--mob,
 .config-choice__item.active span:first-child,
 .config-choice__item input,
 .config-choice__price span:last-child{
@@ -706,14 +722,19 @@ body.lock{
     display: block;
     color: var(--light-accent);
 }
-.config-tab__item{
-    display: none;
-}
 .config-tab__item.active{
     display: block;
 }
-.config-choice__item.hidden{
-    display: none;
+
+@media all and (min-height: 968px){
+    .config{
+        max-height: 984px;
+        min-height: unset;
+        height: 100%;
+    }
+    .config-top{
+        max-height: calc(100% - 204px);
+    }
 }
 
 @media all and (max-width: 1376px){
@@ -742,8 +763,11 @@ body.lock{
         grid-template-columns: 70px minmax(0, 1fr);
     }
     .config-top{
-        height: calc(100dvh - 192px);
-        max-height: calc(100dvh - 192px);
+        height: calc(100dvh - 171px);
+        max-height: calc(100dvh - 171px);
+    }
+    .config-bottom{
+        padding: 44px 16px 16px;
     }
 }
 
@@ -774,7 +798,113 @@ body.lock{
 }
 
 @media all and (max-width: 992px){
-    
+    .config-bottom__label .trapeze__text{
+        font-size: 14px;
+        min-height: 28px;
+    }
+    .modal-config{
+        padding: 0;
+    }
+    .config{
+        min-height: 100dvh;
+        gap: 0;
+    }
+    .config-top {
+        height: calc(100dvh - 184px);
+        max-height: unset;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        overflow-y: auto;
+        gap: 0;
+        background: var(--light-background);
+    }
+    .config-item{
+        flex-shrink: 0;
+        height: auto;
+        border-radius: 0px;
+        border: none;
+    }
+    .config-slider{
+        position: relative;
+    }
+    .config-slider__item img{
+        max-height: 340px;
+        height: 100%;
+        position: relative;
+    }
+    .category-item__content--mob{
+        display: block;
+    }
+    .config-slider-wrap{
+        position: relative;
+        border: 2px solid var(--light-stroke);
+        border-radius: 4px;
+        padding: 16px;
+        margin-top: 24px;
+    }
+    .config__nav{
+        top: 16px;
+        right: 16px;
+    }
+    .config__zoom{
+        bottom: 16px;
+        right: 16px;
+    }
+    .config-item--cat .category-item__content,
+    .config-item--components,
+    .config-result .title-rec,
+    .active-components .config-item--cat,
+    .active-components .config-item--slider,
+    .config-bottom .modal__close,
+    .config-item__top{
+        display: none;
+    }
+    .config-bottom{
+        border-radius: 0px;
+        border: none;
+        border-top: 1px solid var(--light-stroke);
+        background: var(--light-white);
+    }
+    .config-result{
+        justify-content: center;
+    }
+    .config-bottom{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .config-bottom__btn{
+        width: 100%;
+    }
+    .config-mob-navigation{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 9;
+    }
+    .btn-back{
+        padding: 0;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        display: none;
+    }
+    .active-components .btn-back{
+        display: block;
+    }
+    .active-components .config-item--components{
+        display: block;
+    }
+    .config-item--cat{
+        padding-top: 0;
+    }
+    .config-item--slider{
+        padding-bottom: 0;
+    }
 }
 
 @media all and (max-width: 568px){
@@ -799,5 +929,28 @@ body.lock{
     }
     .modal-radio__item{
         flex-shrink: 0;
+    }
+    .config-category__next{
+        pointer-events: none;
+        background: linear-gradient(90deg, rgba(244, 244, 244, 0) 0%, #f4f4f4 100%);
+        width: 48px;
+        right: -1px;
+    }
+    .config-category__prev,
+    .config-category__next svg{
+        display: none;
+    }
+}
+
+@media all and (max-width: 380px){
+    .config-bottom{
+        padding-top: 35px;
+        gap: 8px;
+    }
+    .config-bottom__btn .btn__content{
+        padding: 14px;
+    }
+    .config-top{
+        height: calc(100dvh - 169px);
     }
 }

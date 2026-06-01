@@ -1,41 +1,65 @@
-<div class="modal modal-config show">
+<div class="modal modal-config">
 	<div class="overlay"></div>
 	<div class="config">
-		<div class="config-top">
-            <div class="config-item config-item--slider">
-                <div class="config-slider">
-                    <div class="config__swiper swiper">
-                        <div class="swiper-wrapper">
-                            <?php for($i = 0; $i < 2; $i++): ?>
-                            <div class="swiper-slide">
-                                <a href="assets/img/content/card<?= $i+1 ?>.webp" class="config-slider__item" data-fancybox="config">
-                                    <img src="assets/img/content/card<?= $i+1 ?>.webp" alt="pc" loading="lazy">
-                                </a>
-                            </div>
-                            <?php endfor; ?>
-                        </div>
+        <div class="config-mob-navigation">
+            <button type="button" class="btn-back config-back">
+                <div class="trapeze trapeze-reverse">
+                    <div class="trapeze__text uppercase">
+                        <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-back"></use></svg>
+                        <span>Назад</span>
                     </div>
                 </div>
-                <div class="nav config__nav">
-                    <button class="nav__item nav__prev hero__prev disabled" type="button" aria-label="предыдущий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
-                    <button class="nav__item nav__next hero__next" type="button" aria-label="следующий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+            </button>
+            <button type="button" class="modal__close close-modal">
+                <div class="trapeze trapeze-reverse">
+                    <div class="trapeze__text uppercase">
+                        <span>Закрыть</span>
+                        <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
+                    </div>
                 </div>
+            </button>
+        </div>
+		<div class="config-top">
+            <div class="config-item config-item--slider">
+                <div class="category-item__content accent-line category-item__content--mob">
+                    <div class="accent-line__title h3 uppercase">Текущий список комплектующих</div>
+                    <div class="accent-line__desc">Если хотите изменить что-то в сборке - выберите необходимую категорию.</div>
+                </div>
+                <div class="config-slider-wrap">
+                    <div class="config-slider">
+                        <div class="config__swiper swiper">
+                            <div class="swiper-wrapper">
+                                <?php for($i = 0; $i < 2; $i++): ?>
+                                <div class="swiper-slide">
+                                    <a href="assets/img/content/card<?= $i+1 ?>.webp" class="config-slider__item" data-fancybox="config">
+                                        <img src="assets/img/content/card<?= $i+1 ?>.webp" alt="pc" loading="lazy">
+                                    </a>
+                                </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav config__nav">
+                        <button class="nav__item nav__prev config__prev disabled" type="button" aria-label="предыдущий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+                        <button class="nav__item nav__next config__next" type="button" aria-label="следующий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+                    </div>
 
-                <button type="button" class="config__zoom" aria-label="увеличить">
-                    <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#zoom"></use></svg>
-                </button>
+                    <button type="button" class="config__zoom" aria-label="увеличить">
+                        <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#zoom"></use></svg>
+                    </button>
 
-                <div class="config-numb">
-                    <div class="trapeze">
-                        <div class="trapeze__text">
-                            <span class="config-numb__start">01</span>
-                            <span>/</span>
-                            <span class="config-numb__end">04</span>
+                    <div class="config-numb">
+                        <div class="trapeze">
+                            <div class="trapeze__text">
+                                <span class="config-numb__start">01</span>
+                                <span>/</span>
+                                <span class="config-numb__end">04</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="config-item">
+            <div class="config-item config-item--cat">
                 <div class="config-item__top">
                     <div class="trapeze trapeze-reverse">
                         <div class="trapeze__text">Выбранные Комплектующие</div>
@@ -66,7 +90,7 @@
                     <?php endforeach; ?>
                 </div>
             </div>
-            <div class="config-item">
+            <div class="config-item config-item--components">
                 <div class="config-item__top">
                     <div class="trapeze trapeze-reverse">
                         <div class="trapeze__text">Доступно</div>
@@ -152,8 +176,8 @@
                 </div>
             </div>
             <button type="button" class="modal__close close-modal">
-                <div class="trapeze trapeze-reverse way-item__title">
-                    <div class="trapeze__text">
+                <div class="trapeze trapeze-reverse">
+                    <div class="trapeze__text uppercase">
                         <span>Закрыть и выйти</span>
                         <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
                     </div>
@@ -183,8 +207,8 @@
 	<div class="modal__wrapper">
 		<form class="modal__box">
             <button type="button" class="modal__close close-modal">
-                <div class="trapeze trapeze-reverse way-item__title">
-                    <div class="trapeze__text">
+                <div class="trapeze trapeze-reverse">
+                    <div class="trapeze__text uppercase">
                         <span>Закрыть</span>
                         <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
                     </div>
@@ -320,8 +344,8 @@
 	<div class="modal__wrapper">
 		<form class="modal__box">
             <button type="button" class="modal__close close-modal">
-                <div class="trapeze trapeze-reverse way-item__title">
-                    <div class="trapeze__text">
+                <div class="trapeze trapeze-reverse">
+                    <div class="trapeze__text uppercase">
                         <span>Закрыть</span>
                         <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
                     </div>
@@ -402,8 +426,8 @@
 	<div class="modal__wrapper">
 		<div class="modal__box" data-container>
             <button type="button" class="modal__close close-modal">
-                <div class="trapeze trapeze-reverse way-item__title">
-                    <div class="trapeze__text">
+                <div class="trapeze trapeze-reverse">
+                    <div class="trapeze__text uppercase">
                         <span>Закрыть</span>
                         <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
                     </div>

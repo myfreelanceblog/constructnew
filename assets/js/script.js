@@ -97,14 +97,34 @@ $(document).ready(function () {
         return false;
     })
 
-    $('.config-nav__item').on('click', function(e){
+    $(document).on('click', '.config-nav__item', function(e){
         const id = $(this).attr('data-id');
+        const $configTop = $('.config-top');
+        const $target = $configTop.find('.config-item--components .modal__line');
+
         $('.config-nav__item').removeClass('active');
         $(this).addClass('active');
+        $('.config').addClass('active-components');
 
         $('.config-tab__item').removeClass('active');
         $('#'+id).addClass('active');
+        
+        $configTop.animate({
+            scrollTop: $target.position().top
+        }, 0);
     })
+
+    $(document).on('click', '.config-back', function() {
+        const $configTop = $('.config-top');
+        const $target = $configTop.find('.config-item--cat');
+
+        $('.config').removeClass('active-components');
+        $('.config-nav__item').removeClass('active');
+
+        $configTop.animate({
+            scrollTop: $configTop.scrollTop() + $target.position().top
+        }, 0);
+    });
 
     $(document).on('click', '.config-category__item', function(e){
         const parents = $(this).parents('.config-tab__item');
@@ -134,6 +154,10 @@ $(document).ready(function () {
         const id = $(parents).attr('id');
         const el = $('[data-id="' + id + '"]');
         $(el).find('.config-nav__desc').html($(this).find('.config-choice__title').text());
+    })
+
+    $(document).on('click', '.config__zoom', function(e){
+        $(this).closest('.config-item').find('.config__swiper .swiper-slide-active a')[0].click();
     })
 
     function checkScroll() {
@@ -386,6 +410,17 @@ document.addEventListener('click', function(e) {
     }
 });
 
+document.querySelectorAll('.excellence-box').forEach(box => {
+    box.querySelectorAll('.excellence-item').forEach(item => {
+        item.querySelector('.excellence-item__top').addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+});
+
+function setHeight(el) { el.style.height = el.scrollHeight + 'px'; }
+function collapse(el) { setHeight(el); requestAnimationFrame(() => el.style.height = '0px'); }
+
 document.querySelectorAll('.faq-box__item').forEach(function(box) {
     const firstItem = box.querySelector('.faq-box__item.active .faq-item');
     if (firstItem) {
@@ -467,6 +502,17 @@ function initSliders() {
             btn.classList.toggle('disabled', ((current === last) || swiper.isEnd));
         });
     }
+
+    function updateNumbers(swiper, currentEl, totalEl) {
+        let current = swiper.realIndex + 1;
+        let total = swiper.slides.length;
+        if (currentEl) {
+            currentEl.textContent = String(current).padStart(2, '0');
+        }
+        if (totalEl) {
+            totalEl.textContent = String(total).padStart(2, '0');
+        }
+    }
     
     const heroLabel = 'hero';
     const hero = document.querySelectorAll('.' + heroLabel);
@@ -492,11 +538,11 @@ function initSliders() {
                     },
                     on: {
                         init: function () {
-                            updateNumbers(this);
+                            updateNumbers(this, currentEl, totalEl);
                             updateButtons(this, heroLabel, slider);
                         },
                         slideChange: function () {
-                            updateNumbers(this);
+                            updateNumbers(this, currentEl, totalEl);
                             updateButtons(this, heroLabel, slider);
                         },
                         reachEnd: function () {
@@ -521,17 +567,6 @@ function initSliders() {
                         swiper.slidePrev();
                     }
                 });
-
-                function updateNumbers(swiper) {
-                    let current = swiper.realIndex + 1;
-                    let total = swiper.slides.length;
-                    if (currentEl) {
-                        currentEl.textContent = String(current).padStart(2, '0');
-                    }
-                    if (totalEl) {
-                        totalEl.textContent = String(total).padStart(2, '0');
-                    }
-                }
             }
         });
     }
@@ -629,20 +664,38 @@ function initSliders() {
     if (configSlider.length > 0) {
         configSlider.forEach(function (slider) {
             const swiperContainer = slider.querySelector('.' + configSliderLabel + '__swiper');
+            const currentEl = slider.querySelector('.' + configSliderLabel + '-numb__start');
+            const totalEl = slider.querySelector('.' + configSliderLabel + '-numb__end');
             
             if (swiperContainer) {
                 const swiper = new Swiper(swiperContainer, {
                     loop: false,
                     slidesPerView: 1,
                     spaceBetween: 0,
+                    on: {
+                        init: function () {
+                            updateNumbers(this, currentEl, totalEl);
+                            updateButtons(this, configSliderLabel, slider);
+                        },
+                        slideChange: function () {
+                            updateNumbers(this, currentEl, totalEl);
+                            updateButtons(this, configSliderLabel, slider);
+                        }
+                    }
                 });
 
                 slider.addEventListener('click', function (e) {
                     const nextButton = e.target.closest('.' + configSliderLabel + '__next');
+                    const prevButton = e.target.closest('.' + configSliderLabel + '__prev');
 
                     if (nextButton) {
                         e.preventDefault();
                         swiper.slideNext();
+                    }
+
+                    if (prevButton) {
+                        e.preventDefault();
+                        swiper.slidePrev();
                     }
                 });
             }
@@ -786,8 +839,14 @@ function initSliders() {
                         allowTouchMove: false,
                         spaceBetween: 20,
                         breakpoints: {
-                            0: { slidesPerView: 'auto' },
-                            1200: { slidesPerView: 3 },
+                            0: {
+                                slidesPerView: 'auto',
+                                allowTouchMove: true,
+                            },
+                            1200: {
+                                slidesPerView: 3,
+                                allowTouchMove: false,
+                            },
                         },
                     });
                 }

@@ -89,6 +89,8 @@
             <li><a href="index.php" target="_blank">Главная</a></li>
             <li><a href="catalog.php" target="_blank">Каталог</a></li>
             <li><a href="category.php" target="_blank">Категория</a></li>
+            <li><a href="series.php" target="_blank">Серия</a></li>
+            <li><a href="product.php" target="_blank">Страница товара</a></li>
         </ul>
     </div>
     

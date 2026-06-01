@@ -2,7 +2,7 @@
     <div class="container">
         <div class="hit pad">
             <div class="top">
-                <h2 class="h1 top__title">Хиты продаж</h2>
+                <h2 class="h1 top__title"><?= isset($hit_title) ? $hit_title : 'Хиты продаж' ?></h2>
                 <div class="nav top__nav nav--gray">
                     <button class="nav__item nav__prev hit__prev" type="button" aria-label="предыдущий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
                     <button class="nav__item nav__next hit__next" type="button" aria-label="следующий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
@@ -40,13 +40,19 @@
             <div class="hit-slider">
                 <div class="hit__swiper swiper">
                     <div class="swiper-wrapper">
-                        <?php foreach($hit as $item): ?>
+                        <?php foreach($hit as $i => $item): ?>
                         <div class="swiper-slide">
                             <?php include 'template-parts/components/card-item.php'; ?>
                         </div>
                         <?php endforeach; ?>
                     </div>
                 </div>
+            </div>
+
+            <div class="line-btn hit__more">
+                <a href="javascript:void(0);" type="button" class="btn-def">
+                    <span>Перейти в каталог</span>
+                </a>
             </div>
         </div>
     </div>

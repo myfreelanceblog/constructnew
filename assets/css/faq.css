@@ -29,6 +29,9 @@
     color: var(--light-accent);
 }
 .faq-box__content{
+    padding-top: 8px;
+}
+.faq-tab + .faq-box__content{
     padding-top: 32px;
     border-top: 1px solid var(--light-stroke);
     margin-top: -1px;
@@ -118,6 +121,16 @@
 .faq-item__answer>div{
     padding: 16px 16px 4px;
     color: var(--light-gray);
+}
+.faq__more{
+    padding-top: 32px;
+}
+
+@media all and (min-width: 768px){
+    .faq__more{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 @media all and (max-width: 768px){

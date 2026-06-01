@@ -47,6 +47,7 @@ include 'functions.php';
     <link rel="stylesheet" href="assets/css/partners.css<?php echo $dev; ?>">
     <link rel="stylesheet" href="assets/css/way.css<?php echo $dev; ?>">
     <link rel="stylesheet" href="assets/css/category.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/product.css<?php echo $dev; ?>">
 
 	<link rel="stylesheet" href="assets/css/footer.css<?php echo $dev; ?>" />
 	

@@ -100,6 +100,7 @@
 .btn--white .pointer__top:after{
     background: var(--light-white);
 }
+.breadcrumb a:hover,
 .btn--white:hover .btn__content{
     color: var(--light-accent);
 }
@@ -536,6 +537,7 @@ body::-webkit-scrollbar-thumb:hover {
 .breadcrumb li{
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 .breadcrumb li:not(:last-child)::after{
     content: '';
@@ -580,6 +582,9 @@ body::-webkit-scrollbar-thumb:hover {
     height: 100%;
     background-color: var(--light-black);
 }
+.title-rec--lg::before{
+    width: 8px;
+}
 .title-rec::after{
     content: '';
     display: block;
@@ -590,6 +595,9 @@ body::-webkit-scrollbar-thumb:hover {
     height: 0;
     border-top: 4px solid var(--light-black);
     border-right: 4px solid transparent;
+}
+.title-rec--lg::after{
+    border-width: 8px;
 }
 @keyframes showEl{
     0%{
@@ -759,6 +767,43 @@ body::-webkit-scrollbar-thumb:hover {
 .custom-select-display.selected{
     color: var(--light-black);
 }
+.border-black{
+    border: 2px solid var(--light-black);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.line-gal{
+    position: absolute;
+    width: 50%;
+    height: 6px;
+    background: var(--light-black);
+    z-index: 1;
+}
+.line-gal--top{
+    top: 0;
+    right: 0;
+}
+.line-gal--bottom{
+    bottom: 0;
+    left: 0;
+}
+.line-gal--top::before,
+.line-gal--bottom::after{
+    content: '';
+    display: block;
+    width: 20px;
+    height: 100%;
+    background: var(--light-black);
+    position: absolute;
+}
+.line-gal--bottom::after{
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 0 105%);
+    left: calc(100% - 1px);
+}
+.line-gal--top::before{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 105%);
+    right: calc(100% - 1px);
+}
 
 @media all and (max-width: 992px){
     .title-ui{
@@ -781,7 +826,10 @@ body::-webkit-scrollbar-thumb:hover {
         width: 2px;
     }
     .btn-secondary{
-        padding: 16px;
+        padding: 14px;
+    }
+    .btn-secondary--transparent{
+        padding: 12px;
     }
     .top__nav{
         display: none;
@@ -795,6 +843,13 @@ body::-webkit-scrollbar-thumb:hover {
     }
     .breadcrumb li:not(:last-child)::after{
         margin: 0 8px;
+    }
+    .btn__content{
+        padding: 15px 32px;
+    }
+    .line-gal{
+        width: 36%;
+        height: 4px;
     }
 }
 

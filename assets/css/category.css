@@ -34,6 +34,7 @@
     grid-template-columns: minmax(0, 1fr) 100px;
     gap: 24px;
     align-items: center;
+    position: relative;
 }
 .category-top__title{
     position: relative;
@@ -83,6 +84,14 @@
 .category__more{
     margin-top: 32px;
 }
+.category-top__price{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 @media all and (max-width: 1200px){
     .grid-cat{
@@ -124,6 +133,15 @@
         grid-template-columns: minmax(0, 1fr) 64px;
     }
     .category-top__title{
+        gap: 12px;
+    }
+    .category-top--price{
+        padding-top: 24px;
+    }
+    .category-top__price .trapeze__text{
+        min-height: 28px;
+    }
+    .category-top--price .title-rec{
         gap: 12px;
     }
 }

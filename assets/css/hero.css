@@ -49,12 +49,6 @@
 .hero-item__title{
     gap: 20px;
 }
-.hero-item__title::before{
-    width: 8px;
-}
-.hero-item__title::after{
-    border-width: 8px;
-}
 .hero-item__desc{
     color: var(--light-gray);
     padding: 8px 0 0 24px;
