@@ -21,41 +21,6 @@ function config(){
                 ],
             ],
         ],
-
-        'cpu' => [
-            'title' => 'Процессор',
-            'selected' => 'Intel Core i5-12400F',
-            'items' => [
-                [
-                    'title' => 'Intel Core i5-12400F',
-                    'price' => 0,
-                ],
-                [
-                    'title' => 'Intel Core i5-13400F',
-                    'price' => 750,
-                ],
-                [
-                    'title' => 'Intel Core i5-14400F',
-                    'price' => 3250,
-                ],
-            ],
-        ],
-
-        'motherboard' => [
-            'title' => 'Материнская плата',
-            'selected' => 'MSI PRO H610M-G DDR4',
-            'items' => [
-                [
-                    'title' => 'MSI PRO H610M-G DDR4',
-                    'price' => 0,
-                ],
-                [
-                    'title' => 'ASUS PRIME B760M-K D4',
-                    'price' => 2875,
-                ],
-            ],
-        ],
-
         'gpu' => [
             'title' => 'Видеокарта',
             'selected' => 'KFA2 GeForce RTX 5050 CORE OC 2FAN LED Black',
@@ -102,22 +67,24 @@ function config(){
                 ],
             ],
         ],
-
-        'cooler' => [
-            'title' => 'Охлаждение',
-            'selected' => 'JONSBO CR-1000 EVO ARGB Black',
+        'cpu' => [
+            'title' => 'Процессор',
+            'selected' => 'Intel Core i5-12400F',
             'items' => [
                 [
-                    'title' => 'JONSBO CR-1000 EVO ARGB Black',
+                    'title' => 'Intel Core i5-12400F',
                     'price' => 0,
                 ],
                 [
-                    'title' => 'JONSBO CR-1000 EVO ARGB White',
-                    'price' => 250,
+                    'title' => 'Intel Core i5-13400F',
+                    'price' => 750,
+                ],
+                [
+                    'title' => 'Intel Core i5-14400F',
+                    'price' => 3250,
                 ],
             ],
         ],
-
         'ram' => [
             'title' => 'Оперативная память',
             'selected' => 'ADATA XPG SPECTRIX D35G RGB DDR4 16Gb (2x8Gb) 3200 MHz Black',
@@ -140,7 +107,34 @@ function config(){
                 ],
             ],
         ],
-
+        'motherboard' => [
+            'title' => 'Материнская плата',
+            'selected' => 'MSI PRO H610M-G DDR4',
+            'items' => [
+                [
+                    'title' => 'MSI PRO H610M-G DDR4',
+                    'price' => 0,
+                ],
+                [
+                    'title' => 'ASUS PRIME B760M-K D4',
+                    'price' => 2875,
+                ],
+            ],
+        ],
+        'cooler' => [
+            'title' => 'Охлаждение',
+            'selected' => 'JONSBO CR-1000 EVO ARGB Black',
+            'items' => [
+                [
+                    'title' => 'JONSBO CR-1000 EVO ARGB Black',
+                    'price' => 0,
+                ],
+                [
+                    'title' => 'JONSBO CR-1000 EVO ARGB White',
+                    'price' => 250,
+                ],
+            ],
+        ],
         'ssd' => [
             'title' => 'Накопитель',
             'selected' => '1000 ГБ M.2 NVMe накопитель ADATA LEGEND 860',
@@ -163,7 +157,6 @@ function config(){
                 ],
             ],
         ],
-
         'psu' => [
             'title' => 'Блок питания',
             'selected' => '1STPLAYER DK Premium, 600W, 80+ Bronze',

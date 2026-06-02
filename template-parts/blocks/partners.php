@@ -8,7 +8,7 @@
                     <div class="swiper-wrapper">
                         <?php for($i = 0; $i < 8; $i++): ?>
                         <div class="swiper-slide">
-                            <a href="javascript:void(0);" class="partners-item">
+                            <div class="partners-item">
                                 <div class="partners-item__ui">
                                     <div class="partners-item__pointer partners-item__pointer--top"></div>
                                     <div class="partners-item__pointer partners-item__pointer--bottom"></div>
@@ -18,7 +18,7 @@
                                 <div class="partners-item__content">
                                     <img src="assets/img/content/p<?= $i + 1 ?>.png" alt="partners" loading="lazy">
                                 </div>
-                            </a>
+                            </div>
                         </div>
                         <?php endfor; ?>
                     </div>

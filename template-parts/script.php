@@ -1,3 +1,8 @@
+<?php
+if (!isset($init_script)){
+    $init_script = 3000;
+}
+?>
 <script>
     async function loadYandexMap() {
         if (window.ymaps) return;
@@ -93,5 +98,5 @@
         });
     });
 
-    setTimeout(lazyLoad, 3000);
+    setTimeout(lazyLoad, <?= $init_script ?>);
 </script>

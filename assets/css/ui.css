@@ -851,6 +851,10 @@ body::-webkit-scrollbar-thumb:hover {
         width: 36%;
         height: 4px;
     }
+    .nav__item{
+        width: 42px;
+        height: 42px;
+    }
 }
 
 @media all and (max-width: 768px){

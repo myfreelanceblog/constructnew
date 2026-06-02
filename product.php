@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<?php $init_script = 0; ?>
 
 <div class="breadcrumb-wrap">
     <div class="container">
@@ -19,6 +20,205 @@
         </ul>
     </div>
 </div>
+
+<?php
+$thumbs_count = 8;
+?>
+<section class="product-section">
+    <div class="container">
+        <div class="product pad pad-medium-top">
+            <div class="product-media">
+                <div class="product-slider">
+                    <div class="gal-small">
+                        <div class="gal-small__swiper swiper">
+                            <div class="swiper-wrapper">
+                                <?php for($i = 0; $i < $thumbs_count; $i++): ?>
+                                <div class="swiper-slide">
+                                    <div class="gal-small__item<?php if($i == 0){echo ' active';} ?>">
+                                        <img src="assets/img/content/hero-pc.webp" alt="construct">
+                                    </div>
+                                </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gal-big border-black">
+                        <div class="nav gal-big__nav">
+                            <button class="nav__item nav__prev gal-big__prev swiper-button-disabled" type="button" aria-label="предыдущий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+                            <button class="nav__item nav__next gal-big__next" type="button" aria-label="следующий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
+                        </div>
+                        <div class="gal-big__swiper swiper">
+                            <div class="swiper-wrapper">
+                                <?php for($i = 0; $i < $thumbs_count; $i++): ?>
+                                <div class="swiper-slide">
+                                    <a href="assets/img/content/hero-pc.webp" class="gal-big__item" data-fancybox="product">
+                                        <img src="assets/img/content/hero-pc.webp" alt="construct">
+                                    </a>
+                                </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                        <button type="button" class="zoom gal-zoom" aria-label="увеличить">
+                            <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#zoom"></use></svg>
+                        </button>
+                        <div class="gal-numb">
+                            <div class="trapeze">
+                                <div class="trapeze__text">
+                                    <span class="gal-numb__start">01</span>
+                                    <span>/</span>
+                                    <span class="gal-numb__end"><?= format_number_slides($thumbs_count) ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-delivery">
+                    <div class="product-delivery__top">
+                        <div class="product-delivery__title h4">Доставка</div>
+                        <?php
+                        $options = [
+                            [
+                                'title' => 'Самовывоз из нашего офиса',
+                                'desc' => 'г. Екатеринбург, ул. Шефская 4А',
+                            ],
+                            [
+                                'title' => 'Доставка по Екатеринбургу',
+                                'desc' => 'Курьером до двери.',
+                            ],
+                            [
+                                'title' => 'Доставка по России ТК CDEK',
+                                'desc' => '3-5 рабочих дней',
+                            ],
+                        ];
+                        ?>
+                        <div class="product-delivery__options">
+                            <?php foreach($options as $k => $option): ?>
+                            <div class="product-delivery__option">
+                                <div class="product-delivery__option-icon">
+                                    <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#deliv<?= $k+1 ?>"></use></svg>
+                                </div>
+                                <div class="product-delivery__option-info">
+                                    <div class="product-delivery__option-name"><?= $option['title'] ?></div>
+                                    <div class="product-delivery__option-desc"><?= $option['desc'] ?></div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                    <div class="product-delivery__bottom">
+                        <div class="product-delivery__stat">
+                            <div class="accent-line">
+                                <div class="accent-line__title h4 best-item__title">1 800+ СБОРОК ПК</div>
+                                <div class="accent-line__desc">Для клиентов по всей России</div>
+                            </div>
+                        </div>
+                        <div class="product-delivery__stat">
+                            <div class="accent-line">
+                                <div class="accent-line__title h4 best-item__title">160+ ОТЗЫВОВ О НАС</div>
+                                <div class="accent-line__desc">На независимых платформах</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <?php
+            $colors = ['black', 'orange', 'white',];
+            ?>
+            <div class="product-content">
+                <div class="product-content__top">
+                    <h1 class="product-content__title h1 uppercase title-rec title-rec--lg">EXTRA CORE</h1>
+                    <div class="colors product__colors">
+                        <?php foreach($colors as $k => $color): ?>
+                        <button class="colors__item color-<?= $color ?><?php if($k == 0){echo ' active';} ?>" type="button" aria-label="<?= $color ?>"></button>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="product-price">
+                        <div class="product-price__val h2"><span>205 900</span>  ₽</div>
+                        <div class="product-price__text">Итоговая стоимость</div>
+                    </div>
+                    <div class="product__btns">
+                        <a href="javascript:void(0);" class="btn pointer cart-add">
+                            <div class="pointer__top"></div>
+                            <div class="pointer__bottom"></div>
+                            <div class="btn__content">
+                                <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#cart"></use></svg>
+                                <span>В корзину</span>
+                            </div>
+                        </a>
+                        <button class="border-side btn-secondary" type="button" aria-label="Изменить конфигурацию" data-modal="config">
+                            <div class="btn-secondary__icon"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#config"></use></svg></div>
+                            <div class="btn-secondary__title">Изменить конфигурацию</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-char">
+                    <div class="product-char__title h5">Характеристики:</div>
+                    <?php
+                    $options = [
+                        [
+                            'icon' => 'c1.svg',
+                            'title' => 'Корпус',
+                            'desc' => 'Montech King 95 Pro — Белый',
+                        ],
+                        [
+                            'icon' => 'c2.svg',
+                            'title' => 'Видеокарта',
+                            'desc' => 'RTX 5050 - RTX 5060Ti',
+                        ],
+                        [
+                            'icon' => 'c3.svg',
+                            'title' => 'Процессор',
+                            'desc' => 'Intel Core i5/Core Ultra 5',
+                        ],
+                        [
+                            'icon' => 'c4.svg',
+                            'title' => 'Оперативная память',
+                            'desc' => 'от 16Gb',
+                        ],
+                        [
+                            'icon' => 'c5.svg',
+                            'title' => 'Материнская плата',
+                            'desc' => 'MSI PRO H610M-G DDR4',
+                        ],
+                        [
+                            'icon' => 'c6.svg',
+                            'title' => 'Охлаждение',
+                            'desc' => 'DEEPCOOL LE360 V2 белая',
+                        ],
+                        [
+                            'icon' => 'c7.svg',
+                            'title' => 'Накопитель',
+                            'desc' => '1000 ГБ M.2 NVMe накопитель ADATA LEGEND 860',
+                        ],
+                        [
+                            'icon' => 'c8.svg',
+                            'title' => 'Блок питания',
+                            'desc' => 'PHANTEKS AMP BH, 750W, 80+ Bronze',
+                        ],
+                    ];
+                    ?>
+                    <div class="options product__options">
+                        <?php foreach($options as $k => $single_opt): ?>
+                        <div class="options__item">
+                            <div class="options__icon">
+                                <img src="assets/img/content/<?= $single_opt['icon'] ?>" alt="gpu" loading="lazy">
+                            </div>
+                            <div class="options__content">
+                                <div class="options__title"><?= $single_opt['title'] ?></div>
+                                <div class="options__desc"><?= $single_opt['desc'] ?></div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <div class="product-delivery-mob"></div>
+        </div>
+    </div>
+</section>
 
 <?php
 $games = [
@@ -282,7 +482,7 @@ $tabs = [
         <div class="excellence pad">
             <div class="title-ui">
                 <div class="title-ui__line"><span></span></div>
-                <h2 class="h1 title-ui__text">Превосходство</h2>
+                <h2 class="h1 title-ui__text excellence__title">Превосходство</h2>
                 <div class="title-ui__line"><span></span></div>
             </div>
 

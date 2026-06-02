@@ -10,7 +10,7 @@
                     <div class="accent-line__title h1 cta__title">Подберём компьютер под ваши задачи за 5 минут</div>
                     <div class="accent-line__desc">Не знаете, какой ПК выбрать? Пройдите быстрый тест за 5 минут  и мы подберём 3–5 оптимальных конфигураций под ваши задачи и бюджет.</div>
                 </div>
-                <button class="btn cta__btn pointer btn--white" type="button" aria-label="Подобрать ПК" data-modal="order">
+                <button class="btn cta__btn pointer btn--white" type="button" aria-label="Подобрать ПК" data-modal="quiz">
                     <div class="pointer__top"></div>
                     <div class="pointer__bottom"></div>
                     <div class="btn__content">

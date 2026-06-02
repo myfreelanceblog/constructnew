@@ -100,7 +100,7 @@ $(document).ready(function () {
     $(document).on('click', '.config-nav__item', function(e){
         const id = $(this).attr('data-id');
         const $configTop = $('.config-top');
-        const $target = $configTop.find('.config-item--components .modal__line');
+        const $target = $configTop.find('.config-item--components .modal-line');
 
         $('.config-nav__item').removeClass('active');
         $(this).addClass('active');
@@ -228,6 +228,12 @@ document.querySelectorAll('.close-modal, .overlay').forEach(function(item) {
         });
 
         document.body.classList.remove('lock');
+    });
+});
+
+document.querySelectorAll('.cart-item__more').forEach(function(item) {
+    item.addEventListener('click', function() {
+        this.closest('.cart-item').classList.toggle('active');
     });
 });
 
@@ -360,32 +366,29 @@ document.addEventListener("click", () => {
 });
 
 let forCount = 0;
-document.querySelectorAll('.check').forEach(function(item) {
+document.querySelectorAll('.check, .radio').forEach(function(item) {
     forCount++;
-    const label = item.querySelector('.check__label');
+    const isRadio = item.classList.contains('radio');
+    const labelClass = isRadio ? '.radio__label' : '.check__label';
+    const label = item.querySelector(labelClass);
     const input = item.querySelector('input');
     if (!label || !input) return;
-    const forItem = label.getAttribute('for') + forCount;
-    label.setAttribute('for', forItem);
-    input.setAttribute('id', forItem);
+    const baseName = label.getAttribute('for') || input.getAttribute('name') || 'field';
+    const newId = (isRadio ? 'radio-' : 'check-') + baseName + forCount;
+    label.setAttribute('for', newId);
+    input.setAttribute('id', newId);
+    item.classList.toggle('active', input.checked);
 });
 document.addEventListener('change', function(e) {
-
-    const input = e.target.closest('.check__input input');
-
+    const input = e.target.closest('.check__input input, .radio__input input');
     if (!input) return;
-
-    document.querySelectorAll('.check').forEach(function(check) {
-
-        const currentInput = check.querySelector('.check__input input');
-
+    const isRadioInput = input.type === 'radio';
+    const parentClass = e.target.closest('.radio') ? '.radio' : '.check';
+    document.querySelectorAll(parentClass).forEach(function(item) {
+        const currentInput = item.querySelector('input');
         if (!currentInput) return;
-
-        if (currentInput.checked) {
-            check.classList.add('active');
-        } else {
-            check.classList.remove('active');
-        }
+        if (isRadioInput && currentInput.name !== input.name) return;
+        item.classList.toggle('active', currentInput.checked);
     });
 });
 
@@ -486,6 +489,12 @@ faqTabs.forEach(function(tab, index) {
     });
 });
 
+const delivery = document.querySelector('.product-delivery');
+const deliveryMob = document.querySelector('.product-delivery-mob');
+if (delivery && deliveryMob) {
+    deliveryMob.append(delivery.cloneNode(true));
+}
+
 function initSliders() {
     function updateButtons(swiper, label, slider) {
         const nextButtons = slider.querySelectorAll('.' + label + '__next');
@@ -545,11 +554,11 @@ function initSliders() {
                             updateNumbers(this, currentEl, totalEl);
                             updateButtons(this, heroLabel, slider);
                         },
-                        reachEnd: function () {
-                            setTimeout(() => {
-                                this.slideTo(0);
-                            }, 4000);
-                        }
+                        // reachEnd: function () {
+                        //     setTimeout(() => {
+                        //         this.slideTo(0);
+                        //     }, 4000);
+                        // }
                     }
                 });
 
@@ -718,6 +727,89 @@ function initSliders() {
                     },
                 });
             }
+        });
+    }
+
+    const productSliderLabel = 'product-slider';
+    const productSliders = document.querySelectorAll('.' + productSliderLabel);
+
+    if (productSliders.length > 0) {
+        productSliders.forEach(function (slider) {
+            const galBigLabel = '.gal-big';
+            const galBigContainer = slider.querySelector(galBigLabel);
+            const currentEl = galBigContainer.querySelector('.gal-numb__start');
+            const totalEl = galBigContainer.querySelector('.gal-numb__end');
+            const zoom = galBigContainer.querySelector('.gal-zoom');
+            const galSmallContainer = slider.querySelector('.gal-small__swiper');
+
+            zoom?.addEventListener('click', function (el) {
+                this.closest(galBigLabel).querySelector('.swiper-slide-active a').click();
+            })
+
+            if (!galBigContainer || !galSmallContainer) return;
+
+            const galBigSwiper = new Swiper('.gal-big__swiper', {
+                loop: false,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: galBigContainer.querySelector(galBigLabel + '__next'),
+                    prevEl: galBigContainer.querySelector(galBigLabel + '__prev'),
+                },
+                on: {
+                    init: function () {
+                        updateNumbers(this, currentEl, totalEl);
+                    },
+                    slideChange: function () {
+                        updateNumbers(this, currentEl, totalEl);
+                    }
+                }
+            });
+
+            const galSmallSwiper = new Swiper(galSmallContainer, {
+                loop: false,
+                slidesPerView: 'auto',
+                direction: "vertical",
+                mousewheel: {
+                    enabled: true,
+                },
+                breakpoints: {
+                    100: {
+                        direction: "horizontal",
+                        mousewheel: {
+                            enabled: false,
+                        },
+                    },
+                    768: {
+                        direction: "vertical",
+                        mousewheel: {
+                            enabled: true,
+                        },
+                    },
+                },
+            });
+
+            const thumbItems = slider.querySelectorAll('.gal-small__item');
+            if (thumbItems.length > 0) thumbItems[0].classList.add('active');
+
+            galBigSwiper.on('slideChange', function () {
+                const i = galBigSwiper.activeIndex;
+
+                thumbItems.forEach(function (item) { item.classList.remove('active'); });
+                if (thumbItems[i]) thumbItems[i].classList.add('active');
+                galSmallSwiper.slideTo(i);
+            });
+
+            thumbItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    const slide = item.closest('.swiper-slide');
+                    const i = Array.from(slide.parentElement.children).indexOf(slide);
+
+                    thumbItems.forEach(function (el) { el.classList.remove('active'); });
+                    item.classList.add('active');
+                    galBigSwiper.slideTo(i);
+                });
+            });
         });
     }
 

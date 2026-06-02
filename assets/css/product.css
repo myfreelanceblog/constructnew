@@ -78,6 +78,7 @@
     padding-bottom: 80%;
     display: block;
 }
+.product,
 .char__box,
 .excellence-item__gal{
     display: grid;
@@ -279,6 +280,204 @@
     display: block;
     width: 20px;
 }
+.product-slider{
+    display: grid;
+    grid-template-columns: 91px minmax(0, 1fr);
+    gap: 20px;
+    --gal-height: 520px;
+    --gal-max-height: calc(60dvh);
+}
+.gal-big__swiper,
+.gal-small__swiper{
+    height: var(--gal-height);
+    max-height: var(--gal-max-height);
+}
+.gal-small__item{
+    height: 91px;
+    border-radius: 6px;
+    padding: 2px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+.gal-small__item::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--light-accent);
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.gal-small__item.active::before{
+    opacity: 1;
+}
+.gal-small__item img{
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    object-fit: contain;
+    border-radius: 4px;
+}
+.gal-big{
+    position: relative;
+}
+.gal-big__item img,
+.gal-big__item,
+.gal-big__swiper{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.gal-big__item img{
+    object-fit: contain;
+}
+.gal-numb{
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+.product-delivery{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 24px;
+}
+.product-content__top,
+.product-delivery__stat,
+.product-delivery__top{
+    border: 1px solid var(--light-stroke);
+    border-radius: 4px;
+    background: var(--light-background);
+    padding: 24px;
+}
+.product-delivery__top{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.product-delivery__options{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.product-delivery__option{
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+}
+.product-delivery__option:not(:last-child){
+    border-bottom: 1px solid var(--light-stroke);
+    padding-bottom: 12px;
+}
+.product-delivery__option-info{
+    position: relative;
+    padding-left: 12px;
+}
+.product-delivery__option-info::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--light-light-gray);
+    width: 1px;
+    height: 32px;
+}
+.product-delivery__bottom{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+}
+.product-delivery__stat .accent-line__desc{
+    padding-top: 12px;
+}
+.product-content__top{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 4px 4px 0 0;
+}
+.product__colors{
+    justify-content: flex-start;
+    padding-top: 8px;
+}
+.product-char,
+.product__btns,
+.product-price{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.product-price__text{
+    font-size: 14px;
+    line-height: 143%;
+    color: var(--light-gray);
+}
+.product-char{
+    border: 1px solid var(--light-stroke);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    padding: 24px;
+    flex: auto;
+}
+.product__options .options__item:last-child,
+.product__options{
+    border: none;
+}
+.product-content{
+    display: flex;
+    flex-direction: column;
+}
+.gal-big__swiper:not(.swiper-initialized) .swiper-slide:nth-child(n + 2),
+.product-delivery-mob{
+    display: none;
+}
+.gal-big__item{
+    outline: none;
+}
+.gal-small__swiper:not(.swiper-initialized){
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.product-delivery__option-desc{
+    font-size: 14px;
+    line-height: 143%;
+    color: var(--light-gray);
+}
+.product-delivery__option-name{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 143%;
+}
+
+@media all and (max-width: 1360px){
+    .product-slider{
+        --gal-height: 400px;
+    }
+}
+
+@media all and (max-width: 1200px){
+    .product-delivery__title{
+        font-size: 20px;
+    }
+}
 
 @media all and (max-width: 992px){
     .excellence-item__top{
@@ -356,6 +555,51 @@
     .games-options__fps{
         font-size: 12px;
     }
+    .product{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .product-delivery{
+        display: none;
+    }
+    .product-delivery-mob{
+        display: block;
+    }
+    .product-delivery-mob .product-delivery{
+        display: flex;
+        padding: 0;
+    }
+    .gal-small__swiper:not(.swiper-initialized) .swiper-wrapper{
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .gal-small__swiper:not(.swiper-initialized) .swiper-slide{
+        flex-shrink: 0;
+    }
+    .product-char,
+    .product-content__top, .product-delivery__stat, .product-delivery__top{
+        padding: 16px;
+    }
+    .product-delivery__bottom{
+        display: flex;
+        flex-direction: column;
+    }
+    .product-delivery__stat .accent-line__desc{
+        padding-top: 8px;
+    }
+    .product-delivery__top{
+        gap: 16px;
+    }
+    .excellence__title{
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media all and (max-width: 768px){
@@ -378,5 +622,33 @@
     }
     .resolutions__item{
         width: 100%;
+    }
+    .product-slider{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+    .gal-big{
+        height: var(--gal-height);
+        max-height: 35vh;
+    }
+    .gal-small .swiper-slide{
+        width: 91px;
+    }
+    .gal-small__swiper{
+        height: auto;
+    }
+    .gal-big__item{
+        height: calc(100% - 80px);
+        top: 40px;
+    }
+}
+
+@media all and (max-width: 380px){
+    .gal-small .swiper-slide{
+        width: 60px;
+    }
+    .gal-small__item{
+        height: 60px;
     }
 }

@@ -91,6 +91,7 @@
             <li><a href="category.php" target="_blank">Категория</a></li>
             <li><a href="series.php" target="_blank">Серия</a></li>
             <li><a href="product.php" target="_blank">Страница товара</a></li>
+            <li><a href="cart.php" target="_blank">Корзина</a></li>
         </ul>
     </div>
     

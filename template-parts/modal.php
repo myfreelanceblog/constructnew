@@ -44,7 +44,7 @@
                         <button class="nav__item nav__next config__next" type="button" aria-label="следующий слайд"><svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#arr-down"></use></svg></button>
                     </div>
 
-                    <button type="button" class="config__zoom" aria-label="увеличить">
+                    <button type="button" class="zoom config__zoom" aria-label="увеличить">
                         <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#zoom"></use></svg>
                     </button>
 
@@ -71,7 +71,7 @@
                     <div class="accent-line__desc">Если хотите изменить что-то в сборке - выберите необходимую категорию.</div>
                 </div>
 
-                <div class="modal__line"><span></span></div>
+                <div class="modal-line"><span></span></div>
                 
                 <?php
                 $config = config();
@@ -102,7 +102,7 @@
                     <div class="accent-line__desc">Выберите категорию и увидите доступный список комплектующих для конфигурации</div>
                 </div>
 
-                <div class="modal__line"><span></span></div>
+                <div class="modal-line"><span></span></div>
                 
                 <?php
                 $count_config = 0;
@@ -219,7 +219,7 @@
                 <div class="accent-line__desc">Ответим на вопросы, сравним конфигурации и подскажем, за счёт чего повысить баланс.</div>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <div class="quiz-quest">
                 <div class="h4">Для каких задач нужен ПК?</div>
@@ -245,7 +245,7 @@
                 </div>
             </div>
             
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <div class="quiz-quest">
                 <div class="h4">Выберите разрешение экрана</div>
@@ -267,7 +267,7 @@
                 </div>
             </div>
             
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <div class="quiz-quest">
                 <div class="h4">Ваш примерный бюджет?</div>
@@ -280,7 +280,7 @@
                 </div>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <div class="modal__row">
                 <div class="h4">Где вам удобнее получить ответ?</div>
@@ -326,7 +326,7 @@
                 </div>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <button type="button" class="btn modal__btn pointer" data-modal="thanks">
                 <div class="pointer__top"></div>
@@ -356,7 +356,7 @@
                 <div class="accent-line__desc">Напишите нам в мессенджерах или отправьте заявку, чтобы мы могли перезвонить!</div>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <div class="modal__row">
                 <div class="h4">Где вам удобнее получить ответ?</div>
@@ -408,7 +408,7 @@
                 </div>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <button type="button" class="btn modal__btn pointer" data-modal="thanks">
                 <div class="pointer__top"></div>
@@ -438,7 +438,7 @@
                 <div class="accent-line__desc">Мы получили вашу заявку на сборку или покупку компьютера и уже начали её обработку. В ближайшее время с вами свяжется наш менеджер.</div>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <div class="modal__text text-ui">
                 <div class="h5 uppercase">Ориентировочный срок ответа:</div>
@@ -449,7 +449,7 @@
                 </ul>
             </div>
 
-            <div class="modal__line"><span></span></div>
+            <div class="modal-line"><span></span></div>
 
             <button type="button" class="btn modal__btn pointer close-modal">
                 <div class="pointer__top"></div>

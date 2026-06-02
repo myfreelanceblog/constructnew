@@ -116,6 +116,7 @@ h4,
     font-family: var(--second-family);
     font-weight: 700;
     font-size: 20px;
+    margin: 0;
 }
 h5,
 .h5{
@@ -207,21 +208,21 @@ div.swiper-slide{
 .modal__close .trapeze::after{
     display: none;
 }
-.modal__line{
+.modal-line{
     display: grid;
     grid-template-columns: 2px minmax(0, 1fr) 2px;
     gap: 8px;
     margin: 24px 0;
 }
-.modal__line::before,
-.modal__line::after{
+.modal-line::before,
+.modal-line::after{
     content: '';
     display: block;
     width: 2px;
     height: 2px;
     background: var(--light-black);
 }
-.modal__line span{
+.modal-line span{
     height: 2px;
     width: 100%;
     display: block;
@@ -461,13 +462,14 @@ body.lock{
     z-index: 3;
     pointer-events: none;
 }
+.gal-big__nav,
 .config__nav{
     position: absolute;
     top: 24px;
     right: 24px;
     z-index: 3;
 }
-.config__zoom{
+.zoom{
     border-radius: 4px;
     padding: 0;
     width: 48px;
@@ -485,10 +487,10 @@ body.lock{
     right: 24px;
     z-index: 3;
 }
-.config__zoom svg{
+.zoom svg{
     transition: all 0.3s;
 }
-.config__zoom:hover svg{
+.zoom:hover svg{
     transform: scale(1.1);
 }
 .config-slider{
@@ -843,11 +845,12 @@ body.lock{
         padding: 16px;
         margin-top: 24px;
     }
+    .gal-big__nav,
     .config__nav{
         top: 16px;
         right: 16px;
     }
-    .config__zoom{
+    .zoom{
         bottom: 16px;
         right: 16px;
     }
