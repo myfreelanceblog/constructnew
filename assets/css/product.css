@@ -79,49 +79,10 @@
     display: block;
 }
 .product,
-.char__box,
 .excellence-item__gal{
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-}
-.char__box{
-    padding-top: 32px;
-    align-items: flex-start;
-}
-.char-item{
-    padding: 24px;
-    border: 1px solid var(--light-stroke);
-    border-radius: 4px;
-    background: var(--light-white);
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-.table__item{
-    display: grid;
-    grid-template-columns: 178px minmax(0, 1fr);
-    align-items: center;
-    gap: 20px;
-    padding: 8px 16px;
-}
-.table__item:nth-child(2n + 1){
-    background: var(--light-background);
-}
-.table__item:nth-child(2n){
-    background: var(--light-white);
-}
-.table__value{
-    font-size: 14px;
-    line-height: 1.43;
-    text-align: right;
-    color: var(--light-black);
-}
-.table__label{
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--light-gray);
 }
 .resolutions{
     padding: 32px 0 24px;
@@ -519,15 +480,6 @@
     .excellence-item__title{
         padding-left: 12px;
     }
-    .char__box{
-        display: flex;
-        flex-direction: column;
-    }
-    .char-item{
-        width: 100%;
-        padding: 16px;
-        gap: 16px;
-    }
     .games-item{
         grid-template-columns: 78px minmax(0, 1fr);
         gap: 12px;
@@ -603,15 +555,6 @@
 }
 
 @media all and (max-width: 768px){
-    .table__item{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    .table__value{
-        text-align: left;
-    }
     .resolutions,
     .games-list{
         display: flex;

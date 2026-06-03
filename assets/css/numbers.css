@@ -1,0 +1,61 @@
+.numbers__top{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.numbers__box{
+    padding: 56px 0 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.info-big{
+    padding: 8px 24px;
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 16px;
+}
+.info-big__img{
+    width: 100px;
+    height: 100px;
+}
+.info-big__img img{
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.info-big__content{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media all and (max-width: 1200px){
+    .info-big{
+        grid-template-columns: 88px minmax(0, 1fr);
+        padding: 8px 16px;
+    }
+    .info-big__img{
+        width: 88px;
+        height: 88px;
+    }
+    .info-big__content{
+        gap: 8px;
+    }
+}
+
+@media all and (max-width: 992px){
+    .numbers__box{
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .numbers__box .info:nth-child(2n) .info-pointer--top,
+    .numbers__box .info:nth-child(2n) .info-pointer--bottom{
+        display: none;
+    }
+    .numbers__top{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+}

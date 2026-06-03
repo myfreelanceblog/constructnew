@@ -303,6 +303,10 @@ div.swiper-slide{
     gap: 12px;
     align-items: center;
 }
+.agree .check__label{
+    color: var(--light-gray);
+    font-weight: 400;
+}
 .check__label a{
     font-weight: 500;
     color: var(--light-black);
@@ -727,6 +731,22 @@ body.lock{
 .config-tab__item.active{
     display: block;
 }
+.char__box{
+    padding-top: 32px;
+    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.char-item{
+    padding: 24px;
+    border: 1px solid var(--light-stroke);
+    border-radius: 4px;
+    background: var(--light-white);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 
 @media all and (min-height: 968px){
     .config{
@@ -907,6 +927,15 @@ body.lock{
     }
     .config-item--slider{
         padding-bottom: 0;
+    }
+    .char__box{
+        display: flex;
+        flex-direction: column;
+    }
+    .char-item{
+        width: 100%;
+        padding: 16px;
+        gap: 16px;
     }
 }
 

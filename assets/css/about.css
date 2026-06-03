@@ -1,0 +1,39 @@
+.about__box{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 32px;
+}
+.about__bottom,
+.about__img{
+    border: 1px solid var(--light-stroke);
+    border-radius: 4px;
+}
+.about__top{
+    padding: 24px;
+}
+.about__bottom{
+    height: 300px;
+}
+.about__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media all and (max-width: 992px){
+    .about__box{
+        display: flex;
+        flex-direction: column;
+    }
+    .about__bottom img,
+    .about__img img{
+        position: relative;
+    }
+    .about__top{
+        padding: 0;
+    }
+    .about__bottom{
+        height: auto;
+    }
+}

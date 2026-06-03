@@ -92,6 +92,7 @@
             <li><a href="series.php" target="_blank">Серия</a></li>
             <li><a href="product.php" target="_blank">Страница товара</a></li>
             <li><a href="cart.php" target="_blank">Корзина</a></li>
+            <li><a href="about.php" target="_blank">О компании</a></li>
         </ul>
     </div>
     

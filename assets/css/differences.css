@@ -1,0 +1,38 @@
+.differences__box{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 32px;
+}
+.differences-item{
+    background: var(--light-white);
+    border-radius: 4px;
+    padding: 24px;
+    min-height: 320px;
+}
+.differences-item .accent-line{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+@media all and (max-width: 1360px){
+    .differences-item{
+        padding: 16px;
+        min-height: 236px;
+    }
+}
+
+@media all and (max-width: 992px){
+    .differences__box{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media all and (max-width: 568px){
+    .differences__box{
+        grid-template-columns: 1fr;
+    }
+}

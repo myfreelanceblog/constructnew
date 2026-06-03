@@ -70,7 +70,7 @@ if (!isset($init_script)){
         if (!mapEl) return;
 
         const point = [55.796835, 37.542689];
-        const contactTitle = 'Спецуборка';
+        const contactTitle = 'Construct PC';
         const caption = 'Москва, Ленинградский пр‑т, д. 50, эт. 3, офис 305';
 
         ymaps.ready(function () {

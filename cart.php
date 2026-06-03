@@ -16,7 +16,7 @@
 
 <section class="cart-section">
     <div class="container">
-        <div class="cart pad pad-medium-top">
+        <div class="cart pad pad-medium-top cart--form">
             <h1 class="cart__title h1 title-side">Корзина</h1>
 
             <?php
@@ -48,7 +48,7 @@
                         <button type="button" class="cart-item__remove">
                             <div class="trapeze trapeze-reverse">
                                 <div class="trapeze__text uppercase">
-                                    <span>Удалить товар</span>
+                                    <span>Удалить <i>товар</i></span>
                                     <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#close"></use></svg>
                                 </div>
                             </div>
@@ -160,13 +160,22 @@
 
                     <div class="modal-line"><span></span></div>
 
+                    <div class="promo">
+                        <div class="promo__title h4">Промокод</div>
+                        <div class="promo__input form-input form-input--white">
+                            <input type="text" placeholder="Введите промокод">
+                        </div>
+                    </div>
+
+                    <div class="modal-line"><span></span></div>
+
                     <div class="cart-price">
                         <div class="cart-price__text">
                             <div class="cart-price__label">Итоговая стоимость</div>
-                            <div class="cart-price__numb h2"><span>205 900</span> ₽</div>
+                            <div class="cart-price__numb h2"><span class="cart-final-price">205 900</span> ₽</div>
                         </div>
                         
-                        <a href="javascript:void(0);" class="btn pointer cart-price__btn">
+                        <a href="#order" class="btn pointer cart-price__btn">
                             <div class="pointer__top"></div>
                             <div class="pointer__bottom"></div>
                             <div class="btn__content">
@@ -175,6 +184,131 @@
                             </div>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart pad pad-medium-top cart--order">
+            <h2 class="cart__title h1 title-side">Оформление заказа</h2>
+
+            <div class="cart-box">
+                <div class="cart-order">
+                    <div class="cart-order__item">
+                        <div class="cart-order__title h4">Контакты</div>
+                        <div class="cart-order__inputs">
+                            <div class="form-input form-input--white cart-order__wide">
+                                <input type="text" placeholder="ФИО">
+                            </div>
+                            <div class="form-input form-input--white">
+                                <input type="tel" placeholder="+7 (">
+                            </div>
+                            <div class="form-input form-input--white">
+                                <input type="email" placeholder="Email">
+                            </div>
+                            <div class="form-input form-input--white cart-order__wide">
+                                <textarea placeholder="Ваш комментарий"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-order__item">
+                        <div class="cart-order__title h4">Способ доставки</div>
+                        <?php
+                        $options = [
+                            [
+                                'title' => 'Самовывоз',
+                                'desc' => 'Забрать лично из офиса г. Екатеринбург, ул. Шефская, 4А',
+                            ],
+                            [
+                                'title' => 'Доставка Екатеринбург',
+                                'desc' => 'Курьером до двери',
+                            ],
+                            [
+                                'title' => 'Доставка по России',
+                                'desc' => 'Доставка в пункт ТК СДЕК',
+                            ],
+                            [
+                                'title' => 'Доставка курьером по России',
+                                'desc' => 'Доставка курьером ТК СДЕК',
+                            ],
+                        ];
+                        ?>
+                        <div class="cart-order__options">
+                            <?php foreach($options as $k => $item): ?>
+                            <div class="cart-order__option">
+                                <div class="check<?php if($k == 0){echo ' active';} ?>">
+                                    <div class="check__input"><input type="radio" name="delivery" value="<?= $item['title'] ?>"<?php if($k == 0){echo ' checked';} ?>></div>
+                                    <label class="check__label"><span class="check__title"><?= $item['title'] ?></span></label>
+                                </div>
+                                <div class="cart-order__desc"><?= $item['desc'] ?></div>
+                            </div>
+                            <?php if(($k + 1) < count($options)): ?>
+                            <div class="modal-line"><span></span></div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <div class="cart-order__item">
+                        <div class="cart-order__title h4">Способ оплаты</div>
+                        <?php
+                        $options = [
+                            [
+                                'title' => 'Наличными в офисе',
+                            ],
+                            [
+                                'title' => 'Системы быстрых платежей (СБП)',
+                            ],
+                            [
+                                'title' => 'Банковский перевод (для физ. лиц)',
+                            ],
+                            [
+                                'title' => 'Банковской картой (+2,5%)',
+                            ],
+                            [
+                                'title' => 'Кредит / рассрочка',
+                            ],
+                            [
+                                'title' => 'Оплата по счету (юр.лица и ИП)',
+                            ],
+                        ];
+                        ?>
+                        <div class="cart-order__options">
+                            <?php foreach($options as $k => $item): ?>
+                            <div class="cart-order__option">
+                                <div class="check<?php if($k == 0){echo ' active';} ?>">
+                                    <div class="check__input"><input type="radio" name="payment" value="<?= $item['title'] ?>"<?php if($k == 0){echo ' checked';} ?>></div>
+                                    <label class="check__label"><span class="check__title"><?= $item['title'] ?></span></label>
+                                </div>
+                            </div>
+                            <?php if(($k + 1) < count($options)): ?>
+                            <div class="modal-line"><span></span></div>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-sidebar">
+                    <div class="cart-sidebar__title h4">Подтверждение</div>
+
+                    <div class="cart-row">
+                        <div class="cart-row__item">
+                            <div class="cart-row__label">Итоговая стоимость:</div>
+                            <div class="cart-row__val"><span class="cart-final-price">205 900</span>  ₽</div>
+                        </div>
+                    </div>
+
+                    <div class="check agree">
+                        <div class="check__input"><input type="checkbox" name="checkbox-agree[]" value="yes"></div>
+                        <label class="check__label"><div class="check__title">Согласен на <a href="https://constructpc.ru/documents/privacy-policy/">обработку персональных данных</a></div></label>
+                    </div>
+
+                    <button type="button" class="btn pointer cart-price__btn">
+                        <div class="pointer__top"></div>
+                        <div class="pointer__bottom"></div>
+                        <div class="btn__content">
+                            <svg width="24" height="24"><use href="assets/img/sprite.svg<?php echo $dev; ?>#send"></use></svg>
+                            <span>Отправить заявку</span>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
