@@ -631,6 +631,51 @@ function initSliders() {
             }
         });
     }
+
+    const controlLabel = 'control';
+    const control = document.querySelectorAll('.' + controlLabel);
+    if (control.length > 0) {
+        control.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + controlLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 3,
+                    roundLengths: true,
+                    spaceBetween: 20,
+                    breakpoints: {
+                        0: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    },
+                    on: {
+                        init: function () {
+                            updateButtons(this, controlLabel, slider);
+                        },
+                        slideChange: function () {
+                            updateButtons(this, controlLabel, slider);
+                        },
+                    }
+                });
+
+                slider.addEventListener('click', function (e) {
+                    const nextButton = e.target.closest('.' + controlLabel + '__next');
+                    const prevButton = e.target.closest('.' + controlLabel + '__prev');
+
+                    if (nextButton) {
+                        e.preventDefault();
+                        swiper.slideNext();
+                    }
+
+                    if (prevButton) {
+                        e.preventDefault();
+                        swiper.slidePrev();
+                    }
+                });
+            }
+        });
+    }
     
     const installLabel = 'install';
     const install = document.querySelectorAll('.' + installLabel);

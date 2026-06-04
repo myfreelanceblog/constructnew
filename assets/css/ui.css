@@ -835,6 +835,74 @@ body::-webkit-scrollbar-thumb:hover {
     line-height: 1.5;
     color: var(--light-gray);
 }
+.badge{
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.badge span{
+    display: block;
+    background: var(--light-black);
+    font-size: 12px;
+    line-height: 150%;
+    color: var(--light-white);
+    padding: 4px;
+    flex: auto;
+}
+.badge::after{
+    content: '';
+    display: block;
+    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    background: var(--light-black);
+    width: 13px;
+    align-self: stretch;
+    margin-left: -1px;
+}
+.badge::before{
+    content: '';
+    display: block;
+    clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+    background: var(--light-black);
+    width: 13px;
+    align-self: stretch;
+    margin-right: -1px;
+}
+.corner__bottom::before,
+.corner__bottom::after,
+.corner::before,
+.corner::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    pointer-events: none;
+}
+.corner::before{
+    top: 7px;
+    left: 7px;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+}
+.corner::after{
+    top: 7px;
+    right: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
+.corner__bottom::before{
+    bottom: 7px;
+    left: 7px;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+}
+.corner__bottom::after{
+    bottom: 7px;
+    right: 7px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+}
 
 @media all and (max-width: 992px){
     .title-ui{

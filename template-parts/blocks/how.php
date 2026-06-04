@@ -1,10 +1,19 @@
-<section class="how-section">
+<?php
+if (!isset($how_title)) {
+    $how_title = 'Как оформить заказ <br>в&nbsp;нашем магазине';
+}
+?>
+<section class="how-section<?php if(isset($how_first)){echo ' how-section--hero';} ?>">
     <div class="container">
-        <div class="how pad">
+        <div class="how pad<?php if(isset($how_first)){echo ' pad-medium-top';} ?>">
+            <?php if(isset($how_first)): ?>
+            <h1 class="how__title h1 title-side"><?= $how_title ?></h1>
+            <?php else: ?>
             <div class="how__top">
-                <h2 class="how__title h1">Как оформить заказ <br>в&nbsp;нашем магазине</h2>
+                <h2 class="how__title h1"><?= $how_title ?></h2>
                 <div class="how__desc">Высокопроизводительные рабочие станции и GPU-серверы для задач в сфере ИИ, 3D, видео и инженерных вычислений Выбирайте процессор, видеокарту, объём памяти и другие параметры — система автоматически проверит совместимость и покажет итоговую стоимость.</div>
             </div>
+            <?php endif; ?>
             <?php
             $steps = [
                 [

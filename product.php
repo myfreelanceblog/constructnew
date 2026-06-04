@@ -110,13 +110,13 @@ $thumbs_count = 8;
                     <div class="product-delivery__bottom">
                         <div class="product-delivery__stat">
                             <div class="accent-line">
-                                <div class="accent-line__title h4 best-item__title">1 800+ СБОРОК ПК</div>
+                                <div class="accent-line__title h4">1 800+ СБОРОК ПК</div>
                                 <div class="accent-line__desc">Для клиентов по всей России</div>
                             </div>
                         </div>
                         <div class="product-delivery__stat">
                             <div class="accent-line">
-                                <div class="accent-line__title h4 best-item__title">160+ ОТЗЫВОВ О НАС</div>
+                                <div class="accent-line__title h4">160+ ОТЗЫВОВ О НАС</div>
                                 <div class="accent-line__desc">На независимых платформах</div>
                             </div>
                         </div>
@@ -530,7 +530,7 @@ $tabs = [
                             <?php if($quest['images']): ?>
                             <div class="excellence-item__gal">
                                 <?php foreach($quest['images'] as $images): ?>
-                                <a href="<?= $images ?>" class="border-black line-border img-absolute excellence-item__img" data-fancybox="ex-<?= $k ?>">
+                                <a href="<?= $images ?>" class="border-black img-absolute excellence-item__img" data-fancybox="ex-<?= $k ?>">
                                     <div class="line-gal line-gal--top"></div>
                                     <div class="line-gal line-gal--bottom"></div>
                                     <img src="<?= $images ?>" alt="gal" loading="lazy">

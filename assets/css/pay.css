@@ -1,0 +1,27 @@
+.pay__box{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 32px;
+}
+.pay-item__img{
+    height: 240px;
+}
+.pay-item{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media all and (max-width: 992px){
+    .pay__box{
+        grid-template-columns: 1fr;
+    }
+    .pay-item__img{
+        height: auto;
+        padding-bottom: 63%;
+    }
+    .pay-item{
+        gap: 16px;
+    }
+}

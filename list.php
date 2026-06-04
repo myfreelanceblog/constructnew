@@ -93,6 +93,8 @@
             <li><a href="product.php" target="_blank">Страница товара</a></li>
             <li><a href="cart.php" target="_blank">Корзина</a></li>
             <li><a href="about.php" target="_blank">О компании</a></li>
+            <li><a href="delivery.php" target="_blank">Доставка</a></li>
+            <li><a href="stage.php" target="_blank">Этапы заказа</a></li>
         </ul>
     </div>
     

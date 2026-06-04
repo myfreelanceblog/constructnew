@@ -54,6 +54,11 @@ include 'functions.php';
     <link rel="stylesheet" href="assets/css/differences.css<?php echo $dev; ?>">
     <link rel="stylesheet" href="assets/css/numbers.css<?php echo $dev; ?>">
     <link rel="stylesheet" href="assets/css/contacts.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/delivery.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/pay.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/package.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/consult.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/control.css<?php echo $dev; ?>">
 
 	<link rel="stylesheet" href="assets/css/footer.css<?php echo $dev; ?>" />
 	

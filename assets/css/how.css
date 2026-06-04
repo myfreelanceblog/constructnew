@@ -83,6 +83,9 @@
 .how-item::before{
     display: none;
 }
+.how-section--hero{
+    border: none;
+}
 
 @media all and (min-width: 992px){
     .how-item:hover .how-item__title{
