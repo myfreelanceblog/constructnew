@@ -59,6 +59,11 @@ include 'functions.php';
     <link rel="stylesheet" href="assets/css/package.css<?php echo $dev; ?>">
     <link rel="stylesheet" href="assets/css/consult.css<?php echo $dev; ?>">
     <link rel="stylesheet" href="assets/css/control.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/shipping.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/simple.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/garant.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/tariff.css<?php echo $dev; ?>">
+    <link rel="stylesheet" href="assets/css/important.css<?php echo $dev; ?>">
 
 	<link rel="stylesheet" href="assets/css/footer.css<?php echo $dev; ?>" />
 	

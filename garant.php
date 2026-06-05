@@ -9,29 +9,18 @@
                     <meta itemprop="position" content="1">
                 </a>
             </li>
-            <li class="breadcrumb__single">Этапы заказа</li>
+            <li class="breadcrumb__single">Гарантия</li>
         </ul>
     </div>
 </div>
 
-<?php
-$how_first = true;
-$how_title = 'Этапы заказа';
-?>
-<?php include 'template-parts/blocks/how.php'; ?>
 
-<?php include 'template-parts/blocks/consult.php'; ?>
+<?php include 'template-parts/blocks/garant.php'; ?>
 
-<?php include 'template-parts/blocks/pay.php'; ?>
-
-<?php include 'template-parts/blocks/way.php'; ?>
-
-<?php include 'template-parts/blocks/control.php'; ?>
-
-<?php include 'template-parts/blocks/shipping.php'; ?>
+<?php include 'template-parts/blocks/tariff.php'; ?>
+<?php include 'template-parts/blocks/important.php'; ?>
 
 <?php include 'template-parts/blocks/faq.php'; ?>
-
 <?php include 'template-parts/blocks/simple.php'; ?>
     
 <?php include 'footer.php'; ?>

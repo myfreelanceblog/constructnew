@@ -48,6 +48,13 @@
 }
 
 @media all and (max-width: 768px){
+    .way__swiper:not(.swiper-initialized) .swiper-wrapper{
+        display: flex;
+    }
+    .way__swiper:not(.swiper-initialized) .swiper-slide{
+        width: 100%;
+        flex-shrink: 0;
+    }
     .way__pagination{
         display: flex;
     }

@@ -62,3 +62,10 @@
         gap: 16px;
     }
 }
+
+@media all and (max-width: 768px){
+    .control__swiper:not(.swiper-initialized) .swiper-slide{
+        width: 100%;
+        flex: 0 0 100%;
+    }
+}

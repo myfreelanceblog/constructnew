@@ -677,6 +677,33 @@ function initSliders() {
         });
     }
     
+    const tariffLabel = 'tariff';
+    const tariff = document.querySelectorAll('.' + tariffLabel);
+    if (tariff.length > 0) {
+        tariff.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + tariffLabel + '__swiper');
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 3,
+                    roundLengths: true,
+                    spaceBetween: 20,
+                    navigation: {
+                        nextEl: slider.querySelector('.' + tariffLabel + '__next'),
+                        prevEl: slider.querySelector('.' + tariffLabel + '__prev'),
+                    },
+                    breakpoints: {
+                        0: { slidesPerView: 1, spaceBetween: 8 },
+                        768: { slidesPerView: 2, spaceBetween: 8 },
+                        992: { slidesPerView: 3, spaceBetween: 8 },
+                        1200: { slidesPerView: 3, spaceBetween: 20 },
+                    },
+                });
+            }
+        });
+    }
+    
     const installLabel = 'install';
     const install = document.querySelectorAll('.' + installLabel);
     if (install.length > 0) {

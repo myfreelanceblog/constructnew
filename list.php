@@ -95,6 +95,7 @@
             <li><a href="about.php" target="_blank">О компании</a></li>
             <li><a href="delivery.php" target="_blank">Доставка</a></li>
             <li><a href="stage.php" target="_blank">Этапы заказа</a></li>
+            <li><a href="garant.php" target="_blank">Гарантия</a></li>
         </ul>
     </div>
     

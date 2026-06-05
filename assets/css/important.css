@@ -1,0 +1,43 @@
+.important__box{
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.important__badge{
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+}
+.important__badge .trapeze__text{
+    font-size: 16px;
+}
+.important__content{
+    padding: 24px;
+}
+.important__content .accent-line__desc{
+    padding-top: 34px;
+}
+
+@media all and (max-width: 1200px){
+    .important__content{
+        padding: 0;
+    }
+}
+
+@media all and (max-width: 992px){
+    .important__box{
+        display: flex;
+        flex-direction: column;
+    }
+    .important__media{
+        padding-bottom: 69%;
+    }
+    .important__content .accent-line__desc{
+        padding-top: 16px;
+    }
+    .important__badge .trapeze__text{
+        font-size: 14px;
+        padding: 3px 16px;
+    }
+}

@@ -225,6 +225,7 @@
     background: var(--light-white);
     cursor: pointer;
     font-size: 16px;
+    color: var(--light-black);
     transition: all 0.3s;
 }
 .btn-secondary--transparent{
@@ -799,6 +800,7 @@ body::-webkit-scrollbar-thumb:hover {
     height: 100%;
     background: var(--light-black);
     position: absolute;
+    will-change: transform;
 }
 .line-gal--bottom::after{
     clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 0 105%);
@@ -903,6 +905,77 @@ body::-webkit-scrollbar-thumb:hover {
     border-bottom: 2px solid #fff;
     border-right: 2px solid #fff;
 }
+.border-pointer{
+    position: relative;
+}
+.border-pointer__bottom::before,
+.border-pointer__bottom::after,
+.border-pointer::before,
+.border-pointer::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--light-black);
+}
+.border-pointer::before{
+    top: 0;
+    left: 0;
+}
+.border-pointer::after{
+    top: 0;
+    right: 0;
+}
+.border-pointer__bottom::before{
+    bottom: 0;
+    left: 0;
+}
+.border-pointer__bottom::after{
+    bottom: 0;
+    right: 0;
+}
+.border-pointer__content{
+    background: var(--light-white);
+    padding: 48px 24px 24px;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.border-pointer__line::before,
+.border-pointer__line::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: calc(100% - 8px);
+    left: 4px;
+    height: 2px;
+    background: var(--light-black);
+}
+.border-pointer__line::before{
+    top: 0;
+}
+.border-pointer__line::after{
+    bottom: 0;
+}
+.border-pointer__side::before,
+.border-pointer__side::after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: calc(100% - 8px);
+    bottom: 4px;
+    width: 2px;
+    background: var(--light-black);
+}
+.border-pointer__side::before{
+    left: 0;
+}
+.border-pointer__side::after{
+    right: 0;
+}
 
 @media all and (max-width: 992px){
     .title-ui{
@@ -988,5 +1061,8 @@ body::-webkit-scrollbar-thumb:hover {
     }
     .table__value{
         text-align: left;
+    }
+    .border-pointer__content{
+        padding: 72px 24px 24px;
     }
 }
