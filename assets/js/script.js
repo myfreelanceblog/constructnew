@@ -790,6 +790,63 @@ function initSliders() {
         });
     }
 
+    const pcGalleryLabel = 'pc-gallery';
+    const pcGallery = document.querySelectorAll('.' + pcGalleryLabel);
+    if (pcGallery.length > 0) {
+        pcGallery.forEach(function (slider) {
+            const swiperContainer = slider.querySelector('.' + pcGalleryLabel + '__swiper');
+            const currentEl = slider.querySelector('.' + pcGalleryLabel + '-numb__start');
+            const totalEl = slider.querySelector('.' + pcGalleryLabel + '-numb__end');
+            const captions = slider.querySelectorAll('.' + pcGalleryLabel + '__caption');
+            const zoom = slider.querySelector('.' + pcGalleryLabel + '__zoom');
+
+            zoom?.addEventListener('click', function (el) {
+                this.closest('.' + pcGalleryLabel).querySelector('.swiper-slide-active a').click();
+            })
+
+            function updateCaptions(swiper) {
+                captions.forEach(function (caption, index) {
+                    caption.classList.toggle('active', index === swiper.realIndex);
+                });
+            }
+            
+            if (swiperContainer) {
+                const swiper = new Swiper(swiperContainer, {
+                    loop: false,
+                    slidesPerView: 1,
+                    spaceBetween: 0,
+                    on: {
+                        init: function () {
+                            updateNumbers(this, currentEl, totalEl);
+                            updateCaptions(this);
+                            updateButtons(this, pcGalleryLabel, slider);
+                        },
+                        slideChange: function () {
+                            updateNumbers(this, currentEl, totalEl);
+                            updateCaptions(this);
+                            updateButtons(this, pcGalleryLabel, slider);
+                        }
+                    }
+                });
+
+                slider.addEventListener('click', function (e) {
+                    const nextButton = e.target.closest('.' + pcGalleryLabel + '__next');
+                    const prevButton = e.target.closest('.' + pcGalleryLabel + '__prev');
+
+                    if (nextButton) {
+                        e.preventDefault();
+                        swiper.slideNext();
+                    }
+
+                    if (prevButton) {
+                        e.preventDefault();
+                        swiper.slidePrev();
+                    }
+                });
+            }
+        });
+    }
+
     const configCategoryLabel = 'config-category';
     const configCategory = document.querySelectorAll('.' + configCategoryLabel);
     if (configCategory.length > 0) {
@@ -1092,6 +1149,52 @@ function initSliders() {
 
         checkHitSlider();
         window.addEventListener('resize', checkHitSlider);
+    });
+
+    const sameLabel = 'same';
+    document.querySelectorAll('.' + sameLabel).forEach(function (slider) {
+        const swiperContainer = slider.querySelector('.' + sameLabel + '__swiper');
+
+        if (!swiperContainer) return;
+
+        let swiper = null;
+
+        function checkSameSlider() {
+            if (window.innerWidth > 768) {
+                if (!swiper) {
+                    swiperContainer.classList.remove('grid');
+
+                    swiper = new Swiper(swiperContainer, {
+                        loop: false,
+                        slidesPerView: 3,
+                        roundLengths: true,
+                        navigation: {
+                            nextEl: slider.querySelector('.' + sameLabel + '__next'),
+                            prevEl: slider.querySelector('.' + sameLabel + '__prev'),
+                        },
+                        spaceBetween: 20,
+                        breakpoints: {
+                            0: {
+                                slidesPerView: 'auto',
+                            },
+                            1200: {
+                                slidesPerView: 3,
+                            },
+                        },
+                    });
+                }
+            } else {
+                swiperContainer.classList.add('grid');
+
+                if (swiper) {
+                    swiper.destroy(true, true);
+                    swiper = null;
+                }
+            }
+        }
+
+        checkSameSlider();
+        window.addEventListener('resize', checkSameSlider);
     });
 
     const wayLabel = 'way';

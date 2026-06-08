@@ -96,6 +96,10 @@
             <li><a href="delivery.php" target="_blank">Доставка</a></li>
             <li><a href="stage.php" target="_blank">Этапы заказа</a></li>
             <li><a href="garant.php" target="_blank">Гарантия</a></li>
+            <li><a href="blog.php" target="_blank">Блог</a></li>
+            <li><a href="single.php" target="_blank">Статья</a></li>
+            <li><a href="page.php" target="_blank">Страница</a></li>
+            <li><a href="404.php" target="_blank">404</a></li>
         </ul>
     </div>
     

@@ -3,9 +3,7 @@
     <footer>
         <div class="container">
             <div class="footer">
-                <div class="footer-top">
-                    <div class="footer-top__line"></div>
-                </div>
+                <div class="line-ui"><span></span></div>
                 <?php
                 $nav = array(
                     'Навигация по сайту' => [

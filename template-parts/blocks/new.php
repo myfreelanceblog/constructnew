@@ -28,7 +28,7 @@
                 ],
             ];
             ?>
-            <div class="new__box">
+            <div class="grid-box new__box">
                 <?php foreach($news as $item): ?>
                 <?php include 'template-parts/components/news-item.php'; ?>
                 <?php endforeach; ?>

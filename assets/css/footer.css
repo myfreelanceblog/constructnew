@@ -2,24 +2,7 @@
     background: var(--light-background);
     padding: 42px 0 24px;
 }
-.footer-top{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 2px 0;
-}
-.footer-top::before,
-.footer-top::after{
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background: var(--light-black);
-}
-.footer-line,
-.footer-top__line{
+.footer-line{
     height: 1px;
     width: 100%;
     background-color: var(--light-stroke);

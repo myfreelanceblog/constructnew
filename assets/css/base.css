@@ -747,6 +747,12 @@ body.lock{
     flex-direction: column;
     gap: 24px;
 }
+.grid-box{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 32px;
+}
 
 @media all and (min-height: 968px){
     .config{
@@ -936,6 +942,13 @@ body.lock{
         width: 100%;
         padding: 16px;
         gap: 16px;
+    }
+}
+
+@media all and (max-width: 768px){
+    .grid-box{
+        display: flex;
+        flex-direction: column;
     }
 }
 

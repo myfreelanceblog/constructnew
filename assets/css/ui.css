@@ -286,16 +286,21 @@
     padding-top: 16px;
     color: var(--light-gray);
 }
+.scrollbar-ui::-webkit-scrollbar,
 body::-webkit-scrollbar {
     width: 10px;
+    height: 5px;
 }
+.scrollbar-ui::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track {
     background: var(--light-background);
 }
+.scrollbar-ui::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb {
     background: var(--light-accent);
 }
 .btn-def:hover,
+.scrollbar-ui::-webkit-scrollbar-thumb:hover,
 body::-webkit-scrollbar-thumb:hover {
     background: var(--hover);
 }
@@ -534,6 +539,12 @@ body::-webkit-scrollbar-thumb:hover {
     color: var(--light-black);
     border-bottom: 1px solid var(--light-stroke);
     border-top: 1px solid var(--light-stroke);
+}
+.breadcrumb__single span{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 172px;
 }
 .breadcrumb li{
     display: flex;
@@ -976,6 +987,28 @@ body::-webkit-scrollbar-thumb:hover {
 .border-pointer__side::after{
     right: 0;
 }
+.line-ui{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 2px 0;
+}
+.line-ui::before,
+.line-ui::after{
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--light-black);
+}
+.line-ui span{
+    height: 1px;
+    width: 100%;
+    background-color: var(--light-stroke);
+    flex: auto;
+}
 
 @media all and (max-width: 992px){
     .title-ui{
@@ -1023,6 +1056,7 @@ body::-webkit-scrollbar-thumb:hover {
         width: 36%;
         height: 4px;
     }
+    .zoom,
     .nav__item{
         width: 42px;
         height: 42px;
